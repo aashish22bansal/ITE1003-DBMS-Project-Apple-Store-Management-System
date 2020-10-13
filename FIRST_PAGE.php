@@ -1,22 +1,38 @@
-<html>
+<html lang="en">
 	<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>DBMS Project</title>
 	</head>
 	<body>
-		<form method="get">
-            <input type="texr" name="pro_id">
-            <button value="Fetch">Fetch</button>
+        <style>
+            input {
+                width: 10%;
+            }
+            input[type=text] {
+                padding: 12px 20px;
+                margin: 8px 0;
+                box-sizing: border-box;
+                border: none;
+                border-bottom: 2px solid red;
+            }
+        </style>
+        <h2> Fetching Apple Product Details</h2>
+        <form method="get" class="form1">
+            <span class="text">Product ID: </span>
+            <input type="text" name="pro_id">
+            <button type="submit" value="Fetch">Fetch</button>
         </form>
         <?php
             $con = mysqli_connect("localhost","root","123Aashish456","applestore");
             if($con)
             {
-                echo "Connection Successful";
+                echo "<br>Connection Successful";
                 if (isset($_GET['pro_id'])){
-                    echo "ID Received <br>";
+                    echo "<br>ID Received <br>";
                     $pro_id=$_GET['pro_id'];
                     echo "<br> $pro_id";
-                    $get_product="select * from appleproducts where apID='$pro_id' ";;
+                    $get_product="select * from appleproducts where apID='$pro_id' ";
                     if($get_product){
                         echo "<br> Getting Product.";
                     }
