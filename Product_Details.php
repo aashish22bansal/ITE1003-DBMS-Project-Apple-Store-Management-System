@@ -3,8 +3,17 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>DBMS Project</title>
+		<link rel="stylesheet" href="FIRST_PAGE.css">
 	</head>
 	<body>
+        <div class="header">
+            <a href="Product_Details.php" class="logo">Apple</a>
+            <div class="header-right">
+                <a class="active" href="Product_Details.php">Home</a>
+                <a href="Login.php">Login</a>
+                <a href="Logout.php">Logout</a>
+            </div>
+        </div>
         <style>
             input {
                 width: 10%;

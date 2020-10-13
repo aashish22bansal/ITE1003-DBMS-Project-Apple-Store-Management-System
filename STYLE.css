@@ -42,7 +42,7 @@ body
     margin: 50px;
     border: 1px solid rgb(255, 52, 82);
 
-
+    
 }
 
 .container h2,.cont h2,.con h2
@@ -156,8 +156,6 @@ body
 .con .row100 .col .inputbox input:valid ~.line
 {
     height: 40px;
- 
-
 }
 .container .row100.inputbox,
 .cont .row100.inputbox,
