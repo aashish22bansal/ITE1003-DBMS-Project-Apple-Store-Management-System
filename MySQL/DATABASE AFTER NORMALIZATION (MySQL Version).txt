@@ -1,0 +1,156 @@
+CREATE TABLE Employee(
+    eID VARCHAR(10) PRIMARY KEY,
+    eAcc_No INT UNIQUE,
+	eEmail VARCHAR(50) UNIQUE,
+    eHire DATE NOT NULL,
+    eSalary INT NOT NULL
+);
+
+CREATE TABLE EmployeeAccount(
+    eAcc_No NUMBER(16) NOT NULL,
+    eName VARCHAR(55) NOT NULL,
+    ePhone NUMBER NOT NULL UNIQUE,
+    eDOB DATE NOT NULL,
+    eBank VARCHAR(50) NOT NULL
+);
+ALTER TABLE EmployeeAccount ADD FOREIGN KEY(eAcc_No) REFERENCES Employee(eAcc_No);
+
+CREATE TABLE Customer(
+    cID VARCHAR(10) PRIMARY KEY,
+    HANDLES VARCHAR(20) NOT NULL,
+    cEmail VARCHAR(30) NOT NULL UNIQUE,
+    cLastPurchase DATE NOT NULL
+);
+ALTER TABLE Customer ADD FOREIGN KEY(HANDLES) REFERENCES Employee(eID);
+
+CREATE TABLE CustomerEmail(
+    cEmail VARCHAR(30) PRIMARY KEY,
+    cName_ VARCHAR(25) NOT NULL,
+    cGender CHAR(1) NOT NULL CHECK(cGender IN('M','F')),
+    cPhone NUMBER(10) NOT NULL UNIQUE
+);
+ALTER TABLE CustomerEmail ADD FOREIGN KEY(cEmail) REFERENCES Customer(cEmail);
+
+CREATE TABLE Sales(
+    sBillingID VARCHAR(10) PRIMARY KEY,
+    sItemsBought VARCHAR(255) NOT NULL UNIQUE,
+    sManaged VARCHAR(10) NOT NULL
+);
+ALTER TABLE Sales ADD FOREIGN KEY(sManaged) REFERENCES Employee(eID);
+
+CREATE TABLE SalesItems(
+    sItemsBought VARCHAR(255) PRIMARY KEY,
+    sTotalCost NUMBER(10) NOT NULL
+);
+ALTER TABLE SalesItems ADD FOREIGN KEY(sItemsBought) REFERENCES Sales(sItemsBought);
+
+CREATE TABLE Payments(
+    ARE_DONE_FOR VARCHAR(10) NOT NULL,
+    pModeOfPayment VARCHAR(10) NOT NULL CHECK(pModeOfPayment IN('Credit','Debit','Cash')),
+    pAmountDue NUMBER(10) NOT NULL
+);
+ALTER TABLE Payments ADD FOREIGN KEY(ARE_DONE_FOR) REFERENCES Sales(sBillingID);
+
+
+
+CREATE TABLE AppleProducts(
+    apID VARCHAR(10) PRIMARY KEY,
+    apName VARCHAR(255) NOT NULL,
+    Buys VARCHAR(10) NOT NULL
+);
+ALTER TABLE AppleProducts ADD FOREIGN KEY(Buys) REFERENCES Customer(cID);
+
+CREATE TABLE iPhone( 
+    iPhProductID         VARCHAR(10)    NOT NULL, 
+    iPhName_             VARCHAR(255)   NOT NULL UNIQUE, 
+    DeviceID             VARCHAR(10)    NOT NULL,
+    CONSTRAINT iPhone_PK PRIMARY KEY(iPhProductID,iPhName_)
+);
+ALTER TABLE iPhone ADD FOREIGN KEY(DeviceID) REFERENCES AppleProducts(apID);
+
+CREATE TABLE iPhoneName(
+    iPhName_             VARCHAR(255)   PRIMARY KEY,
+    iPhScreen            NUMBER(      NOT NULL, 
+    iPhRAM               NUMBER(      NOT NULL, 
+    iPhUnlocking_Feature VARCHAR(255)   NOT NULL, 
+    iPhStorage_          NUMBER(4)      NOT NULL, 
+    iPhBattery           VARCHAR(8)     NOT NULL, 
+    iPhCharger           VARCHAR(20)    NOT NULL, 
+    iPhWeight            VARCHAR(10)    NOT NULL, 
+    iPhProcessor         VARCHAR(50)    NOT NULL, 
+    iPhPrice             NUMBER(5)      NOT NULL
+);
+ALTER TABLE iPhoneName ADD FOREIGN KEY(iPhName_) REFERENCES iPhone(iPhName_);
+
+CREATE TABLE Airpods(
+    aProductID VARCHAR(10) PRIMARY KEY,
+    aName_ VARCHAR(255) NOT NULL UNIQUE,
+    DeviceID VARCHAR(10) NOT NULL
+);
+ALTER TABLE Airpods ADD FOREIGN KEY(DeviceID) REFERENCES AppleProducts(apID);
+CREATE TABLE AirpodsName(
+    aName_ VARCHAR(255) PRIMARY KEY,
+    aDriver    NUMBER(2) NOT NULL,
+    aRange_    NUMBER(2) NOT NULL,
+    aGestureControl VARCHAR(255) NOT NULL,
+    aBatteryBackup VARCHAR(8) NOT NULL,
+    aBluetoothVersion VARCHAR(20) NOT NULL,
+    aPrice NUMBER(5) NOT NULL
+);
+ALTER TABLE AirpodsName ADD FOREIGN KEY(aName_) REFERENCES Airpods(aName_);
+
+CREATE TABLE iPad(
+    iPaProductID CHAR(10) NOT NULL PRIMARY KEY,
+    iPaName_ VARCHAR(255) NOT NULL UNIQUE,
+    DeviceId VARCHAR(10) NOT NULL
+);
+ALTER TABLE iPad ADD FOREIGN KEY(DeviceID) REFERENCES AppleProducts(apID);
+
+CREATE TABLE iPadName(
+    iPaName VARCHAR(255) PRIMARY KEY,
+    iPaScreenSize NUMBER(2) NOT NULL,
+    iPaRAM NUMBER(2) NOT NULL,
+    iPaUnlockingFeature CHAR(255) NOT NULL,
+    iPaStorage_ NUMBER(4) NOT NULL,
+    iPaBattery CHAR(8) NOT NULL,
+    iPaWeight CHAR(10) NOT NULL,
+    iPaProcessor CHAR(50) NOT NULL,
+    iPaPrice NUMBER(5) NOT NULL
+);
+ALTER TABLE iPadName ADD FOREIGN KEY(iPaName) REFERENCES iPad(iPaName_);
+
+CREATE TABLE MacBook(
+    mProductID CHAR(10) NOT NULL PRIMARY KEY,
+    mName VARCHAR(255) NOT NULL UNIQUE,
+    DeviceId VARCHAR(10) NOT NULL
+);
+ALTER TABLE MacBook ADD FOREIGN KEY(DeviceID) REFERENCES AppleProducts(apID);
+CREATE TABLE MacBookName(
+    mName VARCHAR(255) PRIMARY KEY,
+    mScreensize NUMBER(2,2) NOT NULL,
+    mRAM NUMBER(2) NOT NULL,
+    mGPU CHAR(20) NOT NULL,
+    mStorage_ NUMBER(4) NOT NULL,
+    mBattery CHAR(8) NOT NULL,
+    mWeight CHAR(10) NOT NULL,
+    mProcessor CHAR(50) NOT NULL,
+    mPrice NUMBER(5) NOT NULL
+);
+ALTER TABLE MacBookName ADD FOREIGN KEY(mName) REFERENCES MacBook(mName);
+
+DROP TABLE Employee;
+DROP TABLE EmployeeAccount;
+DROP TABLE Customer;
+DROP TABLE CustomerEmail;
+DROP TABLE Sales;
+DROP TABLE SalesItems;
+DROP TABLE Payments;
+DROP TABLE AppleProducts;
+DROP TABLE iPhone;
+DROP TABLE iPhoneName;
+DROP TABLE Airpods;
+DROP TABLE AirpodsName;
+DROP TABLE iPad;
+DROP TABLE iPadName;
+DROP TABLE MacBookName;
+DROP TABLE MacBook;
