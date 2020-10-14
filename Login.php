@@ -12,7 +12,7 @@
                 <a href="Logout.php">Logout</a>
             </div>
         </div>
-        <form action="action_page.php" method="post">
+        <form action="HOME_PAGE.html" method="post">
             <div class="imgcontainer">
                 <img src="login.jpg" alt="Avatar" class="avatar" width="100px" height="100px">
             </div>
@@ -32,19 +32,19 @@
 
             <div class="container" style="background-color:#f1f1f1">
                 <button type="button" class="cancelbtn">Cancel</button>
-                <span class="psw">Forgot <a href="#">password?</a></span>
+                <!--span class="psw">Forgot <a href="#">password?</a></span-->
             </div>
         </form>
-        <?php
+        <!--?php
             session_start();
             $db=mysqli_connect("localhost","root","123Aashish456","applestore");
-            if (!isset($_SESSION['cEmail'])) {
-                echo "Welcome User";
+            if (!isset($_SESSION['uname'])) {
+                echo "<a href='Login.php'>Login</a>";
             }
             else{
-                echo "Welcome: ".$_SESSION['cEmail']. "";
+                echo "Welcome: ".$_SESSION['uname']. "";
             }
-        ?>
+        ?-->
     </body>
 
 </html>

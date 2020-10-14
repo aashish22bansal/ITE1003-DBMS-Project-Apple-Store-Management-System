@@ -26,7 +26,7 @@
                 border-bottom: 2px solid red;
             }
         </style>
-        <h2> Fetching Apple Product Details</h2>
+        <h2> Fetching Customer Details</h2>
         <form method="get" class="form1">
             <span class="text">Product ID: </span>
             <input type="text" name="pro_id">

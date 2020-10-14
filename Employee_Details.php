@@ -26,9 +26,9 @@
                 border-bottom: 2px solid red;
             }
         </style>
-        <h2> Fetching Apple Product Details</h2>
+        <h2> Fetching Employee Details</h2>
         <form method="get" class="form1">
-            <span class="text">Product ID: </span>
+            <span class="text">Employee ID: </span>
             <input type="text" name="pro_id">
             <button type="submit" value="Fetch">Fetch</button>
         </form>
@@ -41,9 +41,9 @@
                     echo "<br>ID Received <br>";
                     $pro_id=$_GET['pro_id'];
                     echo "<br> $pro_id";
-                    $get_product="select * from appleproducts where apID='$pro_id' ";
+                    $get_product="select * from employee where eID='$pro_id' ";
                     if($get_product){
-                        echo "<br> Getting Product.";
+                        echo "<br> Getting Employee.";
                     }
                     $run = mysqli_query($con,$get_product);
                     if($run){
@@ -56,10 +56,9 @@
                     while($details = mysqli_fetch_array($run)){
                         echo "<br> Inside while";
                         //echo $details;
-                        $apID = $details['apID'];
-                        $apName = $details['apName'];
-                        $Buys = $details['Buys'];
-                        echo "<div>$apID <br> $apName <br> $Buys</div>";
+                        $eID = $details['eID'];
+                        $eName = $details['eName'];
+                        echo "<div>$eID <br> $eName </div>";
                     }
                 }
             }
