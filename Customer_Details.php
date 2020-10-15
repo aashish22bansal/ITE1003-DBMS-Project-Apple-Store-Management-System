@@ -28,8 +28,8 @@
         </style>
         <h2> Fetching Customer Details</h2>
         <form method="get" class="form1">
-            <span class="text">Product ID: </span>
-            <input type="text" name="pro_id">
+            <span class="text">Customer ID: </span>
+            <input type="text" name="customer_id">
             <button type="submit" value="Fetch">Fetch</button>
         </form>
         <?php
@@ -37,29 +37,42 @@
             if($con)
             {
                 echo "<br>Connection Successful";
-                if (isset($_GET['pro_id'])){
+                if (isset($_GET['customer_id']))
+                {
                     echo "<br>ID Received <br>";
-                    $pro_id=$_GET['pro_id'];
-                    echo "<br> $pro_id";
-                    $get_product="select * from appleproducts where apID='$pro_id' ";
-                    if($get_product){
-                        echo "<br> Getting Product.";
-                    }
-                    $run = mysqli_query($con,$get_product);
-                    if($run){
-                        echo "<br> Query Ran";
-                    }
-                    /*$details = mysqli_fetch_array($run);
-                    if($details){
-                        echo "<br> Details ran";
-                    }*/
-                    while($details = mysqli_fetch_array($run)){
+                    $customer_id=$_GET['customer_id'];
+                    echo "<br> $customer_id";
+                    $get_customer="select * from customer where cID='$customer_id'";
+                    $run = mysqli_query($con,$get_customer);
+                    while($details = mysqli_fetch_array($run))
+                    {
                         echo "<br> Inside while";
-                        //echo $details;
-                        $apID = $details['apID'];
-                        $apName = $details['apName'];
-                        $Buys = $details['Buys'];
-                        echo "<div>$apID <br> $apName <br> $Buys</div>";
+                        $cID = $details['cID'];
+                        $HANDLES = $details['HANDLES'];
+                        $cEmail = $details['cEmail'];
+                        $cLastPurchase = $details['cLastPurchase'];
+                        $fetch_other_details = "select * from customeremail where cEmail='$cEmail'";
+                        $run_other = mysqli_query($con,$fetch_other_details);
+                        while($other_details=mysqli_fetch_array($run_other))
+                        {
+                            $cEmail = $other_details['cEmail'];
+                            $cName_ = $other_details['cName_'];
+                            $cGender = $other_details['cGender'];
+                            $cPhone = $other_details['cPhone'];
+                            $cType = $other_details['cType'];
+                            echo "
+                            <div>
+                                <b>Customer ID              :</b> $cID          <br>
+                                <b>Customer Name            :</b> $cName_       <br>
+                                <b>Customer Gender          :</b> $cGender      <br>
+                                <b>Customer Handler         :</b> $HANDLES      <br>
+                                <b>Customer Email           :</b> $cEmail       <br>
+                                <b>Customer Last Purchase   :</b> $cLastPurchase<br>
+                                <b>Customer Phone           :</b> $cPhone       <br>
+                                <b>Customer Type            :</b> $cType        <br>
+                            </div>
+                            ";
+                        }
                     }
                 }
             }

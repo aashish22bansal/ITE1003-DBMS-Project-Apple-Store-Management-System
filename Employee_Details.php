@@ -58,7 +58,27 @@
                         //echo $details;
                         $eID = $details['eID'];
                         $eAcc_No = $details['eAcc_No'];
-                        echo "<div>$eID <br> $eName </div>";
+                        $eHire = $details['eHire'];
+                        $eSalary = $details['eSalary'];
+                        $get_other_details = "select * from employeeaccount where eAcc_No='$eAcc_No'";
+                        $run_other = mysqli_query($con,$get_other_details);
+                        $other_details = mysqli_fetch_array($run_other);
+                        $eName = $other_details['eName'];
+                        $ePhone = $other_details['ePhone'];
+                        $eDOB = $other_details['eDOB'];
+                        $eBank = $other_details['eBank'];
+                        echo "
+                        <div>
+                            <b>Employee ID           :</b> $eID <br>
+                            <b>Employee Name         :</b> $eName<br>
+                            <b>Employee Phone        :</b> $ePhone<br>
+                            <b>Employee Date of Birth:</b> $eDOB<br>
+                            <b>Employee Account No.  :</b> $eAcc_No<br>
+                            <b>Employee Bank         :</b> $eBank<br>
+                            <b>Employee Hire Date    :</b> $eHire<br>
+                            <b>Employee Salary       :</b> $eSalary<br>
+                        </div>
+                        ";
                     }
                 }
             }
