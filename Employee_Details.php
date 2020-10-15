@@ -57,7 +57,7 @@
                         echo "<br> Inside while";
                         //echo $details;
                         $eID = $details['eID'];
-                        $eName = $details['eName'];
+                        $eAcc_No = $details['eAcc_No'];
                         echo "<div>$eID <br> $eName </div>";
                     }
                 }

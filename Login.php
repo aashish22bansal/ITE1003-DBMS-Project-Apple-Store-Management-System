@@ -35,7 +35,7 @@
                 <!--span class="psw">Forgot <a href="#">password?</a></span-->
             </div>
         </form>
-        <!--?php
+        <?php
             session_start();
             $db=mysqli_connect("localhost","root","123Aashish456","applestore");
             if (!isset($_SESSION['uname'])) {
@@ -43,8 +43,15 @@
             }
             else{
                 echo "Welcome: ".$_SESSION['uname']. "";
+				$admin_email = $_SESSION['uname'];
+				$checking_in_admin = "select * from admin where adEmail='$admin_email'";
+				$running_query = mysqli_query($con,$checking_in_admin);
+				if($running_query){
+					header("Employee_Details.php"); /* Redirect browser */
+					exit();
+				}
             }
-        ?-->
+        ?>
     </body>
 
 </html>
