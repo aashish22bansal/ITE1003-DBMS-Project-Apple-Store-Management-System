@@ -27,7 +27,7 @@
             }
         </style>
         <h2> Fetching Product Details</h2>
-        <form method="get" class="form1">
+        <form method="post" class="form1">
             <span class="text">Product Type: </span>
             <input type="text" name="pro_type">
             <span class="text">Product ID: </span>
@@ -39,15 +39,15 @@
             if($con)
             {
                 echo "<br>Connection Successful";
-                if(isset($_GET['pro_type']))
+                if(isset($_POST['pro_type']))
                 {
-                    $pro_type=$_GET['pro_type'];
+                    $pro_type=$_POST['pro_type'];
                     if($pro_type=="iPhone" || $pro_type=="iphone" || $pro_type=="IPHONE")
                     {
-                        if (isset($_GET['pro_id']))
+                        if (isset($_POST['pro_id']))
                         {
                             echo "<br>ID Received <br>";
-                            $pro_name=$_GET['pro_id'];
+                            $pro_name=$_POST['pro_id'];
                             $pro_id = $pro_name;
                             $get_iphone = "select * from iphone where iPhProductID='$pro_id'";
                             $run_iphone = mysqli_query($con,$get_iphone);
@@ -92,10 +92,10 @@
                     }
                     else if($pro_type=="iPad" || $pro_type=="ipad" || $pro_type=="IPAD")
                     {
-                        if (isset($_GET['pro_id']))
+                        if (isset($_POST['pro_id']))
                         {
                             echo "<br>ID Received <br>";
-                            $pro_name=$_GET['pro_id'];
+                            $pro_name=$_POST['pro_id'];
                             $pro_id = $pro_name;
                             $get_ipad = "select * from ipad where iPaProductID='$pro_id'";
                             $run_ipad = mysqli_query($con,$get_ipad);
@@ -148,10 +148,10 @@
                     }
                     else if($pro_type=="MacBook" || $pro_type=="macbook" || $pro_type=="MACBOOK")
                     {
-                        if (isset($_GET['pro_id']))
+                        if (isset($_POST['pro_id']))
                         {
                             echo "<br>ID Received <br>";
-                            $pro_name=$_GET['pro_id'];
+                            $pro_name=$_POST['pro_id'];
                             $pro_id = $pro_name;
                             $get_iphone = "select * from macbook where mProductID='$pro_id'";
                             $run_iphone = mysqli_query($con,$get_iphone);
@@ -202,10 +202,10 @@
                         }
                     }
                     else if($pro_type=="AirPods" || $pro_type=="airpods" || $pro_type=="AIRPODS"){
-                        if (isset($_GET['pro_id']))
+                        if (isset($_POST['pro_id']))
                         {
                             echo "<br>ID Received <br>";
-                            $pro_name=$_GET['pro_id'];
+                            $pro_name=$_POST['pro_id'];
                             $pro_id = $pro_name;
                             $get_airpods = "select * from airpods where aProductID='$pro_id'";
                             $run_airpods = mysqli_query($con,$get_airpods);

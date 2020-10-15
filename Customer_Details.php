@@ -77,5 +77,58 @@
                 }
             }
         ?>
+        <h2> Adding an Customer Details</h2>
+        <form method="post" class="form1">
+            <span class="text">Customer ID:             </span><input type="text" name="cust_id"><br>
+            <span class="text">Customer Name:           </span><input type="text" name="cust_name"><br>
+            <span class="text">Customer Gender [M or F]:</span><input type="text" name="cust_gender"><br>
+            <span class="text">Customer Handler:        </span><input type="text" name="cust_handler"><br>
+            <span class="text">Customer Email:          </span><input type="text" name="cust_email"><br>
+            <span class="text">Customer Last Purchase:  </span><input type="date" name="cust_last_purchase"><br>
+            <span class="text">Customer Phone:          </span><input type="text" name="cust_phone"><br>
+            <span class="text">Customer Type:           </span><input type="text" name="cust_type"><br>
+            <button type="submit" value="Fetch">Add</button>
+        </form>
+        <?php
+            if($con)
+            {
+                if(isset($_POST['cust_id']))
+                {
+                    echo "<br>Customer Detail Received!<br>";
+                    $cust_id = $_POST['cust_id'];
+                    $cust_name = $_POST['cust_name'];
+                    $cust_gender = $_POST['cust_gender'];
+                    $cust_handler = $_POST['cust_handler'];
+                    $cust_email = $_POST['cust_email'];
+                    $cust_last_purchase = $_POST['cust_last_purchase'];
+                    $cust_phone = $_POST['cust_phone'];
+                    $cust_type = $_POST['cust_type'];
+                    echo "
+                    <div>
+                        <b>Customer ID              :</b> $cust_id <br>
+                        <b>Customer Name            :</b> $cust_name<br>
+                        <b>Customer Gender          :</b> $cust_gender<br>
+                        <b>Customer Handler         :</b> $cust_handler<br>
+                        <b>Customer Email           :</b> $cust_email<br>
+                        <b>Customer Last Purchase   :</b> $cust_last_purchase<br>
+                        <b>Customer Phone           :</b> $cust_phone<br>
+                        <b>Customer Type            :</b> $cust_type<br>
+                    </div>
+                    ";
+                    $insert_customer_table_1 = "insert into customer(cID,HANDLES,cEmail,cLastPurchase) values('$cust_id','$cust_handler','$cust_email','$cust_last_purchase')";
+                    $insert_customer_table_2 = "insert into customeremail(cEmail,cName_,cGender,cPhone,cType) values('$cust_email','$cust_name','$cust_gender','$cust_phone','$cust_type')";
+                    $run_query_1 = mysqli_query($con,$insert_customer_table_1);
+                    $run_query_2 = mysqli_query($con,$insert_customer_table_2);
+                    if($run_query_1)
+                    {
+                        echo "<br>Query 1 worked<br>";
+                    }
+                    if($run_query_2)
+                    {
+                        echo "<br>Query 2 worked<br>";
+                    }
+                }
+            }
+        ?>
 	</body>
 </html>
