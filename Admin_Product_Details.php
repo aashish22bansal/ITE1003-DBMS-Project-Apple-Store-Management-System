@@ -267,7 +267,7 @@
             <input type="text" name="pro_type">
             <span class="text">Product ID: </span>
             <input type="text" name="pro_id">
-            <button type="submit" class="button" name="Add" value="Add">Fetch</button>
+            <button type="submit" class="button" name="Add" value="Add">Add</button>
         </form>
         <?php
             if(array_key_exists('Add',$_POST))
@@ -292,6 +292,7 @@
                                 $pro_id = $pro_name;
                                 echo "
                                 <form method='post' class='form1'>
+                                    <span class='text'>  Apple Product ID:          </span><input type='text' name='apID'><br>
                                     <span class='text'>  iPhone Product ID:         </span><input type='text' name='iPhProductID'><br>
                                     <span class='text'>  iPhone Name:               </span><input type='text' name='iPhName_'><br>
                                     <span class='text'>  iPhone Device ID:          </span><input type='text' name='DeviceID'><br>
@@ -304,7 +305,7 @@
                                     <span class='text'>  iPhone Weight:             </span><input type='text' name='iPhWeight'><br>
                                     <span class='text'>  iPhone Processor:          </span><input type='text' name='iPhProcessor'><br>
                                     <span class='text'>  iPhone Price:              </span><input type='number' name='iPhPrice'><br>
-                                    <button type='submit' class='button' name='Add_iPhone' value='Add_iPhone'>Fetch</button>
+                                    <button type='submit' class='button' name='Add_iPhone' value='Add_iPhone'>Add</button>
                                 </form>
                                 ";
                                 if(array_key_exists('Add_iPhone',$_POST))
@@ -320,6 +321,7 @@
                                     if(isset($_POST['iPhProductID']))
                                     {
                                         echo "<br>iPhone Detail Received!<br>";
+                                        $apID                   = $_POST['apID'];
                                         $iPhProductID           = $_POST['iPhProductID'];
                                         $iPhName_               = $_POST['iPhName_'];
                                         $DeviceID               = $_POST['DeviceID'];
@@ -332,10 +334,12 @@
                                         $iPhWeight              = $_POST['iPhWeight'];
                                         $iPhProcessor           = $_POST['iPhProcessor'];
                                         $iPhPrice               = $_POST['iPhPrice'];
-                                        $add_iphone_query_1 = "insert into iphone(iPhProductID,iPhName_,DeviceID) values('$iPhProductID','$iPhName_','$DeviceID')";
-                                        $add_iphone_query_2 = "insert into iphonename(iPhName_,iPhScreen,iPhRAM,iPhUnlocking_Feature,iPhStorage_,iPhBattery,iPhCharger,iPhWeight,iPhProcessor,iPhPrice) values('$iPhName_','$iPhScreen','$iPhRAM','$iPhUnlocking_Feature','$iPhStorage_','$iPhBattery','$iPhCharger','$iPhWeight','$iPhProcessor','$iPhPrice')";
+                                        $add_iphone_query_1 = "insert into appleproducts(apID,apName,Buys) values('$apID','$iPhName_','X')";
+                                        $add_iphone_query_2 = "insert into iphone(iPhProductID,iPhName_,DeviceID) values('$iPhProductID','$iPhName_','$DeviceID')";
+                                        $add_iphone_query_3 = "insert into iphonename(iPhName_,iPhScreen,iPhRAM,iPhUnlocking_Feature,iPhStorage_,iPhBattery,iPhCharger,iPhWeight,iPhProcessor,iPhPrice) values('$iPhName_','$iPhScreen','$iPhRAM','$iPhUnlocking_Feature','$iPhStorage_','$iPhBattery','$iPhCharger','$iPhWeight','$iPhProcessor','$iPhPrice')";
                                         $run_add_iphone_query_1 = mysqli_query($con,$add_iphone_query_1);
                                         $run_add_iphone_query_2 = mysqli_query($con,$add_iphone_query_2);
+                                        $run_add_iphone_query_3 = mysqli_query($con,$add_iphone_query_3);
                                         if($run_add_iphone_query_1)
                                         {
                                             echo "<br>In the process of adding the Product Details.<br>";
@@ -350,7 +354,15 @@
                                         }
                                         else
                                         {
-                                            echo "<br><b>SECOND QUERY DID NOT RUN.</b><br>";
+                                            echo "<br><b>SECOND QUERY DID NOT RUN. </b><br>";
+                                        }
+                                        if($run_add_iphone_query_3)
+                                        {
+                                            echo "<br>Process Completed.<br>";
+                                        }
+                                        else
+                                        {
+                                            echo "<br><b>THIRD QUERY DID NOT RUN.</b><br>";
                                         }
 
                                         // Displaying the Details after adding to the database
@@ -414,6 +426,7 @@
                                 $pro_id = $pro_name;
                                 echo "
                                 <form method='post' class='form1'>
+                                    <span class-'text'>  Apple Product ID:        </span><input type='text' name='apID'><br>
                                     <span class='text'>  iPad Product ID:         </span><input type='text' name='iPaProductID'><br>
                                     <span class='text'>  iPad Name:               </span><input type='text' name='iPaName_'><br>
                                     <span class='text'>  iPad Device ID:          </span><input type='text' name='DeviceId'><br>
@@ -425,7 +438,7 @@
                                     <span class='text'>  iPad Weight:             </span><input type='text' name='iPaWeight'><br>
                                     <span class='text'>  iPad Processor:          </span><input type='text' name='iPaProcessor'><br>
                                     <span class='text'>  iPad Price:              </span><input type='number' name='iPaPrice'><br>
-                                    <button type='submit' class='button' name='Add_iPad' value='Add_iPad'>Fetch</button>
+                                    <button type='submit' class='button' name='Add_iPad' value='Add_iPad'>Add</button>
                                 </form>
                                 ";
                                 if(array_key_exists('Add_iPad',$_POST))
@@ -441,6 +454,7 @@
                                     if(isset($_POST['iPaProductID']))
                                     {
                                         echo "<br>iPad Detail Received!<br>";
+                                        $apID                   = $_POST['apID'];
                                         $iPaProductID           = $_POST['iPhProductID'];
                                         $iPaName_               = $_POST['iPhName_'];
                                         $DeviceID               = $_POST['DeviceID'];
@@ -452,10 +466,12 @@
                                         $iPaWeight              = $_POST['iPhWeight'];
                                         $iPaProcessor           = $_POST['iPhProcessor'];
                                         $iPaPrice               = $_POST['iPhPrice'];
-                                        $add_ipad_query_1 = "insert into ipad(iPaProductID,iPaName_,DeviceId) values('$iPhProductID','$iPhName_','$DeviceID')";
-                                        $add_ipad_query_2 = "insert into ipadname(iPaName,iPaScreenSize,iPaRAM,iPaUnlockingFeature,iPaStorage_,iPaBattery,iPaWeight,iPaProcessor,iPaPrice) values('$iPaName_','$iPaScreenSize','$iPaRAM','$iPaUnlockingFeature','$iPaStorage_','$iPaBattery','$iPaWeight','$iPaProcessor','$iPaPrice')";
+                                        $add_ipad_query_1 = "insert into appleproducts(apID,apName,Buys) values('$apID','$iPaName_','X')";
+                                        $add_ipad_query_2 = "insert into ipad(iPaProductID,iPaName_,DeviceId) values('$iPhProductID','$iPhName_','$DeviceID')";
+                                        $add_ipad_query_3 = "insert into ipadname(iPaName,iPaScreenSize,iPaRAM,iPaUnlockingFeature,iPaStorage_,iPaBattery,iPaWeight,iPaProcessor,iPaPrice) values('$iPaName_','$iPaScreenSize','$iPaRAM','$iPaUnlockingFeature','$iPaStorage_','$iPaBattery','$iPaWeight','$iPaProcessor','$iPaPrice')";
                                         $run_add_ipad_query_1 = mysqli_query($con,$add_ipad_query_1);
                                         $run_add_ipad_query_2 = mysqli_query($con,$add_ipad_query_2);
+                                        $run_add_ipad_query_3 = mysqli_query($con,$add_ipad_query_3);
                                         if($run_add_ipad_query_1)
                                         {
                                             echo "<br>In the process of adding the Product Details.<br>";
@@ -471,6 +487,14 @@
                                         else
                                         {
                                             echo "<br><b>SECOND QUERY DID NOT RUN.</b><br>";
+                                        }
+                                        if($run_add_ipad_query_3)
+                                        {
+                                            echo "<br>Process Completed.<br>";
+                                        }
+                                        else
+                                        {
+                                            echo "<br><b>THIRD QUERY DID NOT RUN.</b><br>";
                                         }
 
                                         // Displaying the Details after adding to the database
@@ -545,6 +569,7 @@
                                 $pro_id = $pro_name;
                                 echo "
                                 <form method='post' class='form1'>
+                                    <span class='text'>  Apple Product ID:   </span><input type='text' name='apID'><br>
                                     <span class='text'>  MacBook Product ID: </span><input type='text' name='mProductID'><br>
                                     <span class='text'>  MacBook Name:       </span><input type='text' name='mName'><br>
                                     <span class='text'>  MacBook Device ID:  </span><input type='text' name='DeviceId'><br>
@@ -556,7 +581,7 @@
                                     <span class='text'>  MacBook Weight:     </span><input type='text' name='mWeight'><br>
                                     <span class='text'>  MacBook Processor:  </span><input type='text' name='mProcessor'><br>
                                     <span class='number'>MacBook Price:      </span><input type='number' name='mPrice'><br>
-                                    <button type='submit' class='button' name='Add_MacBook' value='Add_MacBook'>Fetch</button>
+                                    <button type='submit' class='button' name='Add_MacBook' value='Add_MacBook'>Add</button>
                                 </form>
                                 ";
                                 if(array_key_exists('Add_MacBook',$_POST))
@@ -572,6 +597,7 @@
                                     if(isset($_POST['mProductID']))
                                     {
                                         echo "<br>MacBook Detail Received!<br>";
+                                        $apID                 = $_POST['apID'];
                                         $mProductID           = $_POST['mProductID'];
                                         $mName                = $_POST['mName'];
                                         $DeviceId             = $_POST['DeviceId'];
@@ -583,10 +609,12 @@
                                         $mWeight              = $_POST['mWeight'];
                                         $mProcessor           = $_POST['mProcessor'];
                                         $mPrice               = $_POST['mPrice'];
-                                        $add_macbook_query_1 = "insert into macbook(mProductID,mName,DeviceId) values('$mProductID','$mName','$DeviceId')";
-                                        $add_macbook_query_2 = "insert into mackbookname(mName,mScreensize,mRAM,mGPU,mStorage_,mBattery,mWeight,mProcessor,mPrice) values('$mName','$mScreensize','$mRAM','$mGPU','$mStorage_','$mBattery','$mWeight','$mProcessor','$mPrice')";
+                                        $add_macbook_query_1 = "insert into appleproducts(apID,apName,Buys) values('$apID','$mName','X')";
+                                        $add_macbook_query_2 = "insert into macbook(mProductID,mName,DeviceId) values('$mProductID','$mName','$DeviceId')";
+                                        $add_macbook_query_3 = "insert into mackbookname(mName,mScreensize,mRAM,mGPU,mStorage_,mBattery,mWeight,mProcessor,mPrice) values('$mName','$mScreensize','$mRAM','$mGPU','$mStorage_','$mBattery','$mWeight','$mProcessor','$mPrice')";
                                         $run_add_macbook_query_1 = mysqli_query($con,$add_macbook_query_1);
                                         $run_add_macbook_query_2 = mysqli_query($con,$add_macbook_query_2);
+                                        $run_add_macbook_query_3 = mysqli_query($con,$add_macbook_query_3);
                                         if($run_add_macbook_query_1)
                                         {
                                             echo "<br>In the process of adding the Product Details.<br>";
@@ -602,6 +630,14 @@
                                         else
                                         {
                                             echo "<br><b>SECOND QUERY DID NOT RUN.</b><br>";
+                                        }
+                                        if($run_add_macbook_query_3)
+                                        {
+                                            echo "<br>Process Completed.<br>";
+                                        }
+                                        else
+                                        {
+                                            echo "<br><b>THIRD QUERY DID NOT RUN.</b><br>";
                                         }
                                         // Displaying Product Details by fetching
                                         $pro_name=$_POST['mProductID'];
@@ -662,46 +698,117 @@
                                 echo "<br>ID Received <br>";
                                 $pro_name=$_POST['pro_id'];
                                 $pro_id = $pro_name;
-                                $get_airpods = "select * from airpods where aProductID='$pro_id'";
-                                $run_airpods = mysqli_query($con,$get_airpods);
-                                while($airpod_details = mysqli_fetch_array($run_airpods))
+                                echo "
+                                <form method='post' class='form1'>
+                                    <span class='text'>  Apple Product ID:          </span><input type='text' name='apID'><br>
+                                    <span class='text'>  AirPods Product ID:        </span><input type='text' name='aProductID'><br>
+                                    <span class='text'>  AirPods Name:              </span><input type='text' name='aName_'><br>
+                                    <span class='text'>  AirPods Device ID:         </span><input type='text' name='DeviceID'><br>
+                                    <span class='text'>  AirPods Driver:            </span><input type='number' name='aDriver'><br>
+                                    <span class='text'>  AirPods Range:             </span><input type='number' name='aRange_'><br>
+                                    <span class='text'>  AirPods Gesture Control:   </span><input type='text' name='aGestureControl'><br>
+                                    <span class='text'>  AirPods Battery Backup:    </span><input type='text' name='aBatteryBackup'><br>
+                                    <span class='text'>  AirPods Bluetooth Version: </span><input type='text' name='aBluetoothVersion'><br>
+                                    <span class='text'>  AirPods Price:             </span><input type='number' name='aPrice'><br>
+                                    <button type='submit' class='button' name='Add_AirPods' value='Add_AirPods'>Add</button>
+                                </form>
+                                ";
+                                if(array_key_exists('Add_AirPods',$_POST))
                                 {
-                                    $aProductID = $airpod_details['aProductID'];
-                                    $aName_ = $airpod_details['aName_'];
-                                    echo $aName_;
-                                    $DeviceID = $airpod_details['DeviceID'];
-                                    $getting_other_details = "select * from airpodsname where aName_='$aName_'";
-                                    if($getting_other_details)
+                                    Add_AirPods();
+                                }
+                                else
+                                {
+                                    echo "<br><b>FORM DIDN'T AUTHENTICATE.</b><br>";
+                                }
+                                function Add_AirPods()
+                                {
+                                    if(isset($_POST['aProductID']))
                                     {
-                                        echo "<br>Query Given<br>";
-                                    }
-                                    $running_other_details = mysqli_query($con,$getting_other_details);
-                                    if($running_other_details)
-                                    {
-                                        echo "Query Ran<br>";
-                                    }
-                                    while($other_airpod_details = mysqli_fetch_array($running_other_details))
-                                    {
-                                        $aName_             = $other_airpod_details['aName_'];
-                                        $aDriver            = $other_airpod_details['aDriver'];
-                                        $aRange_            = $other_airpod_details['aRange_'];
-                                        $aGestureControl    = $other_airpod_details['aGestureControl'];
-                                        $aBatteryBackup     = $other_airpod_details['aBatteryBackup'];
-                                        $aBluetoothVersion  = $other_airpod_details['aBluetoothVersion'];
-                                        $aPrice             = $other_airpod_details['aPrice'];
-                                        echo "
-                                        <div>
-                                            <b>AirPod ID                :</b> $aProductID       <br>
-                                            <b>AirPod Name              :</b> $aName_           <br>
-                                            <b>AirPod Device ID         :</b> $DeviceID         <br>
-                                            <b>AirPod Driver            :</b> $aDriver          <br>
-                                            <b>AirPod Range             :</b> $aRange_          <br>
-                                            <b>AirPod Gesture Control   :</b> $aGestureControl  <br>
-                                            <b>AirPod Battery Backup    :</b> $aBatteryBackup   <br>
-                                            <b>AirPod Bluetooth Version :</b> $mBattery         <br>
-                                            <b>AirPod Price             :</b> $aPrice           <br>
-                                        </div>
-                                        ";
+                                        echo "<br>AirPods Detail Received!<br>";
+                                        $apID               = $_POST['apID'];
+                                        $aProductID         = $_POST['aProductID'];
+                                        $aName_             = $_POST['aName_'];
+                                        $DeviceID           = $_POST['DeviceID'];
+                                        $aDriver            = $_POST['aDriver'];
+                                        $aRange_            = $_POST['aRange_'];
+                                        $aGestureControl    = $_POST['aGestureControl'];
+                                        $aBatteryBackup     = $_POST['aBatteryBackup'];
+                                        $aBluetoothVersion  = $_POST['aBluetoothVersion'];
+                                        $aPrice             = $_POST['aPrice'];
+                                        $add_airpods_query_1 = "insert into appleproducts(apID,apName,Buys) values('$apID','$aName_','X')";
+                                        $add_airpods_query_2 = "insert into airpods(aProductID,aName_,DeviceID) values('$aProductID','$aName_','$DeviceID')";
+                                        $add_airpods_query_3 = "insert into airpodsname(aName_,aDriver,aRange_,aGestureControl,aBatteryBackup,aBluetoothVersion,aPrice) values('$aName_','$aDriver','$aRange_','$aGestureControl','$aBatteryBackup','$aBluetoothVersion','$aPrice')";
+                                        $run_add_airpods_query_1 = mysqli_query($con,$add_airpods_query_1);
+                                        $run_add_airpods_query_2 = mysqli_query($con,$add_airpods_query_2);
+                                        $run_add_airpods_query_3 = mysqli_query($con,$add_airpods_query_3);
+                                        if($run_add_airpods_query_1)
+                                        {
+                                            echo "<br>In the process of adding the Product Details.<br>";
+                                        }
+                                        else
+                                        {
+                                            echo "<br><b>FIRST QUERY DID NOT RUN.</b><br>";
+                                        }
+                                        if($run_add_airpods_query_2)
+                                        {
+                                            echo "<br>Product Details <b>ADDED</b>.<br>";
+                                        }
+                                        else
+                                        {
+                                            echo "<br><b>SECOND QUERY DID NOT RUN.</b><br>";
+                                        }
+                                        if($run_add_airpods_query_3)
+                                        {
+                                            echo "<br>Process Completed.<br>";
+                                        }
+                                        else
+                                        {
+                                            echo "<br><b>THIRD QUERY DID NOT RUN.</b><br>";
+                                        }
+                                        // Displaying Product Details by fetching
+                                        $get_airpods = "select * from airpods where aProductID='$aProductID'";
+                                        $run_airpods = mysqli_query($con,$get_airpods);
+                                        while($airpod_details = mysqli_fetch_array($run_airpods))
+                                        {
+                                            $aProductID = $airpod_details['aProductID'];
+                                            $aName_ = $airpod_details['aName_'];
+                                            echo $aName_;
+                                            $DeviceID = $airpod_details['DeviceID'];
+                                            $getting_other_details = "select * from airpodsname where aName_='$aName_'";
+                                            if($getting_other_details)
+                                            {
+                                                echo "<br>Query Given<br>";
+                                            }
+                                            $running_other_details = mysqli_query($con,$getting_other_details);
+                                            if($running_other_details)
+                                            {
+                                                echo "Query Ran<br>";
+                                            }
+                                            while($other_airpod_details = mysqli_fetch_array($running_other_details))
+                                            {
+                                                $aName_             = $other_airpod_details['aName_'];
+                                                $aDriver            = $other_airpod_details['aDriver'];
+                                                $aRange_            = $other_airpod_details['aRange_'];
+                                                $aGestureControl    = $other_airpod_details['aGestureControl'];
+                                                $aBatteryBackup     = $other_airpod_details['aBatteryBackup'];
+                                                $aBluetoothVersion  = $other_airpod_details['aBluetoothVersion'];
+                                                $aPrice             = $other_airpod_details['aPrice'];
+                                                echo "
+                                                <div>
+                                                    <b>AirPod ID                :</b> $aProductID       <br>
+                                                    <b>AirPod Name              :</b> $aName_           <br>
+                                                    <b>AirPod Device ID         :</b> $DeviceID         <br>
+                                                    <b>AirPod Driver            :</b> $aDriver          <br>
+                                                    <b>AirPod Range             :</b> $aRange_          <br>
+                                                    <b>AirPod Gesture Control   :</b> $aGestureControl  <br>
+                                                    <b>AirPod Battery Backup    :</b> $aBatteryBackup   <br>
+                                                    <b>AirPod Bluetooth Version :</b> $mBattery         <br>
+                                                    <b>AirPod Price             :</b> $aPrice           <br>
+                                                </div>
+                                                ";
+                                            }
+                                        }
                                     }
                                 }
                             }
