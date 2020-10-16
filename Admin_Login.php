@@ -1,18 +1,18 @@
 <html>
     <head>
-        <title>Login</title>
+        <title>Admin Login</title>
         <link rel="stylesheet" href="Login.css">
     </head>
     <body>
         <div class="header">
-            <a href="Product_Details.php" class="logo">Apple</a>
+            <a href="Admin_HOME_PAGE.html" class="logo">Apple</a>
             <div class="header-right">
-                <a class="active" href="Product_Details.php">Home</a>
-                <a href="Login.php">Login</a>
+                <a class="active" href="Admin_HOME_PAGE.html">Home</a>
+                <a href="Customer_Login.php">Customer Login</a>
                 <a href="Logout.php">Logout</a>
             </div>
         </div>
-        <form action="HOME_PAGE.html" method="post">
+        <form action="Admin_HOME_PAGE.html" method="post">
             <div class="imgcontainer">
                 <img src="login.jpg" alt="Avatar" class="avatar" width="100px" height="100px">
             </div>

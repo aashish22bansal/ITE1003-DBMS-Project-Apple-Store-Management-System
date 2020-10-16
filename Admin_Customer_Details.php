@@ -2,23 +2,25 @@
 	<head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>DBMS Project</title>
+        <title>Admin Customer View</title>
 		<link rel="stylesheet" href="FIRST_PAGE.css">
 	</head>
 	<body>
         <div class="header">
-            <a href="HOME_PAGE.html" class="logo">Apple</a>
+            <a href="Admin_HOME_PAGE.html" class="logo">Apple</a>
             <div class="header-right">
-                <a class="active" href="Product_Details.php">Home</a>
-                <a href="Login.php">Login</a>
+                <a class="active" href="Admin_HOME_PAGE.html">Home</a>
+                <a href="Customer_Login.php">Customer Login</a>
                 <a href="Logout.php">Logout</a>
             </div>
         </div>
         <style>
-            input {
+            input 
+            {
                 width: 10%;
             }
-            input[type=text] {
+            input[type=text] 
+            {
                 padding: 12px 20px;
                 margin: 8px 0;
                 box-sizing: border-box;
@@ -27,7 +29,7 @@
             }
         </style>
         <h2> Fetching Customer Details</h2>
-        <form method="get" class="form1">
+        <form method="post" class="form1">
             <span class="text">Customer ID: </span>
             <input type="text" name="customer_id">
             <button type="submit" value="Fetch">Fetch</button>
@@ -37,10 +39,10 @@
             if($con)
             {
                 echo "<br>Connection Successful";
-                if (isset($_GET['customer_id']))
+                if (isset($_POST['customer_id']))
                 {
                     echo "<br>ID Received <br>";
-                    $customer_id=$_GET['customer_id'];
+                    $customer_id=$_POST['customer_id'];
                     echo "<br> $customer_id";
                     $get_customer="select * from customer where cID='$customer_id'";
                     $run = mysqli_query($con,$get_customer);
@@ -126,6 +128,70 @@
                     if($run_query_2)
                     {
                         echo "<br>Query 2 worked<br>";
+                    }
+                }
+            }
+        ?>
+        <h2>Removing a Customer</h2>
+        <form method="post" class="form1">
+            <span class="text">Customer ID: </span>
+            <input type="text" name="pro_id">
+            <button type="submit" value="Fetch">Remove Customer</button>
+        </form>
+        <?php
+            if($con)
+            {
+                echo "<br>Connection Successful";
+                if (isset($_POST['customer_id']))
+                {
+                    echo "<br>ID Received <br>";
+                    $customer_id=$_POST['customer_id'];
+                    echo "<br> $customer_id";
+                    $get_customer="select * from customer where cID='$customer_id'";
+                    $run = mysqli_query($con,$get_customer);
+                    while($details = mysqli_fetch_array($run))
+                    {
+                        echo "<br> Inside while";
+                        $cID = $details['cID'];
+                        $HANDLES = $details['HANDLES'];
+                        $cEmail = $details['cEmail'];
+                        $cLastPurchase = $details['cLastPurchase'];
+                        $fetch_other_details = "select * from customeremail where cEmail='$cEmail'";
+                        $run_other = mysqli_query($con,$fetch_other_details);
+                        while($other_details=mysqli_fetch_array($run_other))
+                        {
+                            $cEmail = $other_details['cEmail'];
+                            $cName_ = $other_details['cName_'];
+                            $cGender = $other_details['cGender'];
+                            $cPhone = $other_details['cPhone'];
+                            $cType = $other_details['cType'];
+                            echo "
+                            <div>
+                                <b>Customer ID              :</b> $cID          <br>
+                                <b>Customer Name            :</b> $cName_       <br>
+                                <b>Customer Gender          :</b> $cGender      <br>
+                                <b>Customer Handler         :</b> $HANDLES      <br>
+                                <b>Customer Email           :</b> $cEmail       <br>
+                                <b>Customer Last Purchase   :</b> $cLastPurchase<br>
+                                <b>Customer Phone           :</b> $cPhone       <br>
+                                <b>Customer Type            :</b> $cType        <br>
+                            </div>
+                            ";
+                            echo "Now removing the Details the Customer from the Database inorder to complete the Process.";
+                            $fire_query_1 = "delete from customeremail where cEmail='$cEmail'";
+                            $fire_query_2 = "delete from customer where cID='$cID'";
+                            $run_fire_query_1 = mysqli_query($con,$fire_query_1);
+                            $run_fire_query_2 = mysqli_query($con,$fire_query_2);
+                            if($run_fire_query_1)
+                            {
+                                echo "<br>Customer Personal Details DELETED.";
+                            }
+                            if($run_fire_query_2)
+                            {
+                                echo "<br>Customer Details Deleted COMPLETELY.";
+                            }
+                            echo "<br>The Customer has been REMOVED.";
+                        }
                     }
                 }
             }

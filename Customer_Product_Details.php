@@ -1,3 +1,9 @@
+<?php
+    $con = mysqli_connect("localhost","root","123Aashish456","applestore");
+    function addProductToCart(){}
+    function generateBill(){}
+    function displayCart(){}
+?>
 <html lang="en">
 	<head>
         <meta charset="UTF-8">
@@ -35,7 +41,6 @@
             <button type="submit" value="Fetch">Fetch</button>
         </form>
         <?php
-            $con = mysqli_connect("localhost","root","123Aashish456","applestore");
             if($con)
             {
                 echo "<br>Connection Successful";
@@ -72,11 +77,11 @@
                                     $iPhPrice = $other_iphone_details['iPhPrice'];
                                     echo "
                                     <div>
-                                        <b>iPhone ID                :</b> $iPhProductID         <br>
+                                        <b>iPhone ID&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp:</b> $iPhProductID         <br>
                                         <b>iPhone Name              :</b> $iPhName_             <br>
                                         <b>iPhone Device ID         :</b> $DeviceID             <br>
                                         <b>iPhone Screen Size       :</b> $iPhScreen            <br>
-                                        <b>iPhone RAM               :</b> $iPhRAM               <br>
+                                        <b>iPhone RAM &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp              :</b> $iPhRAM               <br>
                                         <b>iPhone Unlocking Feature :</b> $iPhUnlocking_Feature <br>
                                         <b>iPhone Storage           :</b> $iPhStorage           <br>
                                         <b>iPhone Battery           :</b> $iPhBattery           <br>
@@ -86,6 +91,7 @@
                                         <b>iPhone Price             :</b> $iPhPrice             <br>
                                     </div>
                                     ";
+                                    echo "<button type='submit' id='buy_product' onclick='addProductToCart()'>Buy Product</button>";
                                 }
                             }
                         }
@@ -201,7 +207,8 @@
                             }
                         }
                     }
-                    else if($pro_type=="AirPods" || $pro_type=="airpods" || $pro_type=="AIRPODS"){
+                    else if($pro_type=="AirPods" || $pro_type=="airpods" || $pro_type=="AIRPODS")
+                    {
                         if (isset($_POST['pro_id']))
                         {
                             echo "<br>ID Received <br>";

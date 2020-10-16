@@ -5,15 +5,15 @@
 	<head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>DBMS Project</title>
+        <title>Admin Employee View</title>
 		<link rel="stylesheet" href="FIRST_PAGE.css">
 	</head>
 	<body>
         <div class="header">
-            <a href="HOME_PAGE.html" class="logo">Apple</a>
+            <a href="Admin_HOME_PAGE.html" class="logo">Apple</a>
             <div class="header-right">
-                <a class="active" href="Product_Details.php">Home</a>
-                <a href="Login.php">Login</a>
+                <a class="active" href="Admin_HOME_PAGE.html">Home</a>
+                <a href="Customer_Login.php">Customer Login</a>
                 <a href="Logout.php">Logout</a>
             </div>
         </div>
@@ -138,6 +138,80 @@
                     if($run_query_2)
                     {
                         echo "<br>Query 2 worked<br>";
+                    }
+                }
+            }
+        ?>
+        <h2>Removing an Employee</h2>
+        <form method="post" class="form1">
+            <span class="text">Employee ID: </span>
+            <input type="text" name="pro_id">
+            <button type="submit" value="Fetch">Fire Employee</button>
+        </form>
+        <?php
+            if($con)
+            {
+                echo "<br>Connection Successful";
+                if (isset($_POST['pro_id']))
+                {
+                    echo "<br>ID Received <br>";
+                    $pro_id=$_POST['pro_id'];
+                    echo "<br> $pro_id";
+                    $get_product="select * from employee where eID='$pro_id' ";
+                    if($get_product)
+                    {
+                        echo "<br> Getting Employee.";
+                    }
+                    $run = mysqli_query($con,$get_product);
+                    if($run)
+                    {
+                        echo "<br> Query Ran";
+                    }
+                    /*$details = mysqli_fetch_array($run);
+                    if($details){
+                        echo "<br> Details ran";
+                    }*/
+                    while($details = mysqli_fetch_array($run))
+                    {
+                        echo "<br> Inside while";
+                        //echo $details;
+                        $eID = $details['eID'];
+                        $eAcc_No = $details['eAcc_No'];
+                        $eHire = $details['eHire'];
+                        $eSalary = $details['eSalary'];
+                        $get_other_details = "select * from employeeaccount where eAcc_No='$eAcc_No'";
+                        $run_other = mysqli_query($con,$get_other_details);
+                        $other_details = mysqli_fetch_array($run_other);
+                        $eName = $other_details['eName'];
+                        $ePhone = $other_details['ePhone'];
+                        $eDOB = $other_details['eDOB'];
+                        $eBank = $other_details['eBank'];
+                        echo "
+                        <div>
+                            <b>Employee ID           :</b> $eID <br>
+                            <b>Employee Name         :</b> $eName<br>
+                            <b>Employee Phone        :</b> $ePhone<br>
+                            <b>Employee Date of Birth:</b> $eDOB<br>
+                            <b>Employee Account No.  :</b> $eAcc_No<br>
+                            <b>Employee Bank         :</b> $eBank<br>
+                            <b>Employee Hire Date    :</b> $eHire<br>
+                            <b>Employee Salary       :</b> $eSalary<br>
+                        </div>
+                        ";
+                        echo "Now removing the Details the Employee from the Database inorder to complete the Process.";
+                        $fire_query_1 = "delete from employeeaccount where eAcc_No='$eAcc_No'";
+                        $fire_query_2 = "delete from employee where eID='$eID'";
+                        $run_fire_query_1 = mysqli_query($con,$fire_query_1);
+                        $run_fire_query_2 = mysqli_query($con,$fire_query_2);
+                        if($run_fire_query_1)
+                        {
+                            echo "<br>Employee Personal Details DELETED.";
+                        }
+                        if($run_fire_query_2)
+                        {
+                            echo "<br>Employee Details Deleted COMPLETELY.";
+                        }
+                        echo "<br>The Employee has been FIRED.";
                     }
                 }
             }
