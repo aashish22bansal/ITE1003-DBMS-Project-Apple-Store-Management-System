@@ -295,15 +295,15 @@
                                     <span class='text'>  iPhone Product ID:         </span><input type='text' name='iPhProductID'><br>
                                     <span class='text'>  iPhone Name:               </span><input type='text' name='iPhName_'><br>
                                     <span class='text'>  iPhone Device ID:          </span><input type='text' name='DeviceID'><br>
-                                    <span class='number'>iPhone Screen Size:        </span><input type='number' name='iPhScreen'><br>
-                                    <span class='number'>iPhone RAM:                </span><input type='number' name='iPhRAM'><br>
+                                    <span class='text'>  iPhone Screen Size:        </span><input type='number' name='iPhScreen'><br>
+                                    <span class='text'>  iPhone RAM:                </span><input type='number' name='iPhRAM'><br>
                                     <span class='text'>  iPhone Unlocking Feature:  </span><input type='text' name='iPhUnlocking_Feature'><br>
-                                    <span class='number'>iPhone Storage:            </span><input type='number' name='iPhStorage_'><br>
+                                    <span class='text'>  iPhone Storage:            </span><input type='number' name='iPhStorage_'><br>
                                     <span class='text'>  iPhone Battery:            </span><input type='text' name='iPhBattery'><br>
                                     <span class='text'>  iPhone Charger:            </span><input type='text' name='iPhCharger'><br>
                                     <span class='text'>  iPhone Weight:             </span><input type='text' name='iPhWeight'><br>
                                     <span class='text'>  iPhone Processor:          </span><input type='text' name='iPhProcessor'><br>
-                                    <span class='number'>iPhone Price:              </span><input type='number' name='iPhPrice'><br>
+                                    <span class='text'>  iPhone Price:              </span><input type='number' name='iPhPrice'><br>
                                     <button type='submit' class='button' name='Add_iPhone' value='Add_iPhone'>Fetch</button>
                                 </form>
                                 ";
@@ -412,51 +412,122 @@
                                 echo "<br>ID Received <br>";
                                 $pro_name=$_POST['pro_id'];
                                 $pro_id = $pro_name;
-                                $get_ipad = "select * from ipad where iPaProductID='$pro_id'";
-                                $run_ipad = mysqli_query($con,$get_ipad);
-                                while($ipad_details = mysqli_fetch_array($run_ipad))
+                                echo "
+                                <form method='post' class='form1'>
+                                    <span class='text'>  iPad Product ID:         </span><input type='text' name='iPaProductID'><br>
+                                    <span class='text'>  iPad Name:               </span><input type='text' name='iPaName_'><br>
+                                    <span class='text'>  iPad Device ID:          </span><input type='text' name='DeviceId'><br>
+                                    <span class='text'>  iPad Screen Size:        </span><input type='number' name='iPaScreenSize'><br>
+                                    <span class='text'>  iPad RAM:                </span><input type='number' name='iPaRAM'><br>
+                                    <span class='text'>  iPad Unlocking Feature:  </span><input type='text' name='iPaUnlockingFeature'><br>
+                                    <span class='text'>  iPad Storage:            </span><input type='number' name='iPaStorage_'><br>
+                                    <span class='text'>  iPad Battery:            </span><input type='text' name='iPaBattery'><br>
+                                    <span class='text'>  iPad Weight:             </span><input type='text' name='iPaWeight'><br>
+                                    <span class='text'>  iPad Processor:          </span><input type='text' name='iPaProcessor'><br>
+                                    <span class='text'>  iPad Price:              </span><input type='number' name='iPaPrice'><br>
+                                    <button type='submit' class='button' name='Add_iPad' value='Add_iPad'>Fetch</button>
+                                </form>
+                                ";
+                                if(array_key_exists('Add_iPad',$_POST))
                                 {
-                                    $iPaProductID = $ipad_details['iPaProductID'];
-                                    $iPaName_ = $ipad_details['iPaName_'];
-                                    echo $iPaName_;
-                                    $DeviceId = $ipad_details['DeviceId'];
-                                    $getting_other_details = "select * from ipadname where iPaName='$iPaName_'";
-                                    if($getting_other_details)
+                                    Add_iPad();
+                                }
+                                else
+                                {
+                                    echo "<br><b>FORM DIDN'T AUTHENTICATE.</b><br>";
+                                }
+                                function Add_iPad()
+                                {
+                                    if(isset($_POST['iPaProductID']))
                                     {
-                                        echo "<br>Query Given<br>";
+                                        echo "<br>iPad Detail Received!<br>";
+                                        $iPaProductID           = $_POST['iPhProductID'];
+                                        $iPaName_               = $_POST['iPhName_'];
+                                        $DeviceID               = $_POST['DeviceID'];
+                                        $iPaScreen              = $_POST['iPhScreen'];
+                                        $iPaRAM                 = $_POST['iPhRAM'];
+                                        $iPaUnlocking_Feature   = $_POST['iPhUnlocking_Feature'];
+                                        $iPaStorage_            = $_POST['iPhStorage_'];
+                                        $iPaBattery             = $_POST['iPhBattery'];
+                                        $iPaWeight              = $_POST['iPhWeight'];
+                                        $iPaProcessor           = $_POST['iPhProcessor'];
+                                        $iPaPrice               = $_POST['iPhPrice'];
+                                        $add_ipad_query_1 = "insert into ipad(iPaProductID,iPaName_,DeviceId) values('$iPhProductID','$iPhName_','$DeviceID')";
+                                        $add_ipad_query_2 = "insert into ipadname(iPaName,iPaScreenSize,iPaRAM,iPaUnlockingFeature,iPaStorage_,iPaBattery,iPaWeight,iPaProcessor,iPaPrice) values('$iPaName_','$iPaScreenSize','$iPaRAM','$iPaUnlockingFeature','$iPaStorage_','$iPaBattery','$iPaWeight','$iPaProcessor','$iPaPrice')";
+                                        $run_add_ipad_query_1 = mysqli_query($con,$add_ipad_query_1);
+                                        $run_add_ipad_query_2 = mysqli_query($con,$add_ipad_query_2);
+                                        if($run_add_ipad_query_1)
+                                        {
+                                            echo "<br>In the process of adding the Product Details.<br>";
+                                        }
+                                        else
+                                        {
+                                            echo "<br><b>FIRST QUERY DID NOT RUN.</b><br>";
+                                        }
+                                        if($run_add_ipad_query_2)
+                                        {
+                                            echo "<br>Product Details <b>ADDED</b>.<br>";
+                                        }
+                                        else
+                                        {
+                                            echo "<br><b>SECOND QUERY DID NOT RUN.</b><br>";
+                                        }
+
+                                        // Displaying the Details after adding to the database
+                                        echo "<br>ID Received <br>";
+                                        $pro_name=$_POST['iPaProductID'];
+                                        $pro_id = $pro_name;
+                                        $get_ipad = "select * from ipad where iPaProductID='$pro_id'";
+                                        $run_ipad = mysqli_query($con,$get_ipad);
+                                        while($ipad_details = mysqli_fetch_array($run_ipad))
+                                        {
+                                            $iPaProductID = $ipad_details['iPaProductID'];
+                                            $iPaName_ = $ipad_details['iPaName_'];
+                                            echo $iPaName_;
+                                            $DeviceId = $ipad_details['DeviceId'];
+                                            $getting_other_details = "select * from ipadname where iPaName='$iPaName_'";
+                                            if($getting_other_details)
+                                            {
+                                                echo "<br>Query Given<br>";
+                                            }
+                                            $running_other_details = mysqli_query($con,$getting_other_details);
+                                            if($running_other_details)
+                                            {
+                                                echo "Query Ran<br>";
+                                            }
+                                            while($other_ipad_details = mysqli_fetch_array($running_other_details))
+                                            {
+                                                echo "Inside while<br>";
+                                                $iPaName            = $other_ipad_details['iPaName'];
+                                                $iPaScreenSize      = $other_ipad_details['iPaScreenSize'];
+                                                $iPaRAM             = $other_ipad_details['iPaRAM'];
+                                                $iPaUnlocking_Feature=$other_ipad_details['iPaUnlocking_Feature'];
+                                                $iPaStorage_        = $other_ipad_details['iPaStorage_'];
+                                                $iPaBattery         = $other_ipad_details['iPaBattery'];
+                                                $iPaWeight          = $other_ipad_details['iPaWeight'];
+                                                $iPaProcessor       = $other_ipad_details['iPaProcessor'];
+                                                $iPaPrice           = $other_ipad_details['iPaPrice'];
+                                                echo "
+                                                <div>
+                                                    <b>iPhone ID                :</b> $iPaProductID         <br>
+                                                    <b>iPhone Name              :</b> $iPaName_             <br>
+                                                    <b>iPhone Device ID         :</b> $DeviceId             <br>
+                                                    <b>iPhone Screen Size       :</b> $iPaScreen            <br>
+                                                    <b>iPhone RAM               :</b> $iPaRAM               <br>
+                                                    <b>iPhone Unlocking Feature :</b> $iPaUnlocking_Feature <br>
+                                                    <b>iPhone Storage           :</b> $iPaStorage           <br>
+                                                    <b>iPhone Battery           :</b> $iPaBattery           <br>
+                                                    <b>iPhone Weight            :</b> $iPaWeight            <br>
+                                                    <b>iPhone Processor         :</b> $iPaProcessor         <br>
+                                                    <b>iPhone Price             :</b> $iPaPrice             <br>
+                                                </div>
+                                                ";
+                                            }
+                                        }
                                     }
-                                    $running_other_details = mysqli_query($con,$getting_other_details);
-                                    if($running_other_details)
+                                    else
                                     {
-                                        echo "Query Ran<br>";
-                                    }
-                                    while($other_ipad_details = mysqli_fetch_array($running_other_details))
-                                    {
-                                        echo "Inside while<br>";
-                                        $iPaName            = $other_ipad_details['iPaName'];
-                                        $iPaScreenSize      = $other_ipad_details['iPaScreenSize'];
-                                        $iPaRAM             = $other_ipad_details['iPaRAM'];
-                                        $iPaUnlocking_Feature=$other_ipad_details['iPaUnlocking_Feature'];
-                                        $iPaStorage_        = $other_ipad_details['iPaStorage_'];
-                                        $iPaBattery         = $other_ipad_details['iPaBattery'];
-                                        $iPaWeight          = $other_ipad_details['iPaWeight'];
-                                        $iPaProcessor       = $other_ipad_details['iPaProcessor'];
-                                        $iPaPrice           = $other_ipad_details['iPaPrice'];
-                                        echo "
-                                        <div>
-                                            <b>iPhone ID                :</b> $iPaProductID         <br>
-                                            <b>iPhone Name              :</b> $iPaName_             <br>
-                                            <b>iPhone Device ID         :</b> $DeviceId             <br>
-                                            <b>iPhone Screen Size       :</b> $iPaScreen            <br>
-                                            <b>iPhone RAM               :</b> $iPaRAM               <br>
-                                            <b>iPhone Unlocking Feature :</b> $iPaUnlocking_Feature <br>
-                                            <b>iPhone Storage           :</b> $iPaStorage           <br>
-                                            <b>iPhone Battery           :</b> $iPaBattery           <br>
-                                            <b>iPhone Weight            :</b> $iPaWeight            <br>
-                                            <b>iPhone Processor         :</b> $iPaProcessor         <br>
-                                            <b>iPhone Price             :</b> $iPaPrice             <br>
-                                        </div>
-                                        ";
+                                        echo "<br><b>DATA NOT RECEIVED.</b><br>";
                                     }
                                 }
                             }
@@ -472,50 +543,115 @@
                                 echo "<br>ID Received <br>";
                                 $pro_name=$_POST['pro_id'];
                                 $pro_id = $pro_name;
-                                $get_iphone = "select * from macbook where mProductID='$pro_id'";
-                                $run_iphone = mysqli_query($con,$get_iphone);
-                                while($iphone_details = mysqli_fetch_array($run_iphone))
+                                echo "
+                                <form method='post' class='form1'>
+                                    <span class='text'>  MacBook Product ID: </span><input type='text' name='mProductID'><br>
+                                    <span class='text'>  MacBook Name:       </span><input type='text' name='mName'><br>
+                                    <span class='text'>  MacBook Device ID:  </span><input type='text' name='DeviceId'><br>
+                                    <span class='text'>  MacBook Screen Size:</span><input type='number' name='mScreensize'><br>
+                                    <span class='text'>  MacBook RAM:        </span><input type='number' name='mRAM'><br>
+                                    <span class='text'>  MacBook GPU:        </span><input type='text' name='mGPU'><br>
+                                    <span class='text'>  MacBook Storage:    </span><input type='number' name='mStorage_'><br>
+                                    <span class='text'>  MacBook Battery:    </span><input type='text' name='mBattery'><br>
+                                    <span class='text'>  MacBook Weight:     </span><input type='text' name='mWeight'><br>
+                                    <span class='text'>  MacBook Processor:  </span><input type='text' name='mProcessor'><br>
+                                    <span class='number'>MacBook Price:      </span><input type='number' name='mPrice'><br>
+                                    <button type='submit' class='button' name='Add_MacBook' value='Add_MacBook'>Fetch</button>
+                                </form>
+                                ";
+                                if(array_key_exists('Add_MacBook',$_POST))
                                 {
-                                    $mProductID = $iphone_details['mProductID'];
-                                    $mName = $iphone_details['mName'];
-                                    echo $mName;
-                                    $DeviceId = $iphone_details['DeviceId'];
-                                    $getting_other_details = "select * from macbookname where mName='$mName'";
-                                    if($getting_other_details)
+                                    Add_MacBook();
+                                }
+                                else
+                                {
+                                    echo "<br><b>FORM DIDN'T AUTHENTICATE.</b><br>";
+                                }
+                                function Add_MacBook()
+                                {
+                                    if(isset($_POST['mProductID']))
                                     {
-                                        echo "<br>Query Given<br>";
-                                    }
-                                    $running_other_details = mysqli_query($con,$getting_other_details);
-                                    if($running_other_details)
-                                    {
-                                        echo "Query Ran<br>";
-                                    }
-                                    while($other_macbook_details = mysqli_fetch_array($running_other_details))
-                                    {
-                                        $mName      = $other_macbook_details['mName'];
-                                        $mScreensize= $other_macbook_details['mScreensize'];
-                                        $mRAM       = $other_macbook_details['mRAM'];
-                                        $mGPU       = $other_macbook_details['mGPU'];
-                                        $mStorage_  = $other_macbook_details['mStorage_'];
-                                        $mBattery   = $other_macbook_details['mBattery'];
-                                        $mWeight    = $other_macbook_details['mWeight'];
-                                        $mProcessor = $other_macbook_details['mProcessor'];
-                                        $mPrice     = $other_macbook_details['mPrice'];
-                                        echo "
-                                        <div>
-                                            <b>MackBook ID            :</b> $mProductID     <br>
-                                            <b>MackBook Name          :</b> $mName          <br>
-                                            <b>MackBook Device ID     :</b> $DeviceId       <br>
-                                            <b>MackBook Screen Size   :</b> $mScreensize    <br>
-                                            <b>MackBook RAM           :</b> $mRAM           <br>
-                                            <b>MackBook GPU           :</b> $mGPU           <br>
-                                            <b>MackBook Storage       :</b> $mStorage_      <br>
-                                            <b>MackBook Battery       :</b> $mBattery       <br>
-                                            <b>MackBook Weight        :</b> $mWeight        <br>
-                                            <b>MackBook Processor     :</b> $mProcessor     <br>
-                                            <b>MackBook Price         :</b> $mPrice         <br>
-                                        </div>
-                                        ";
+                                        echo "<br>MacBook Detail Received!<br>";
+                                        $mProductID           = $_POST['mProductID'];
+                                        $mName                = $_POST['mName'];
+                                        $DeviceId             = $_POST['DeviceId'];
+                                        $mScreensize          = $_POST['mScreensize'];
+                                        $mRAM                 = $_POST['mRAM'];
+                                        $mGPU                 = $_POST['mGPU'];
+                                        $mStorage_            = $_POST['mStorage_'];
+                                        $mBattery             = $_POST['mBattery'];
+                                        $mWeight              = $_POST['mWeight'];
+                                        $mProcessor           = $_POST['mProcessor'];
+                                        $mPrice               = $_POST['mPrice'];
+                                        $add_macbook_query_1 = "insert into macbook(mProductID,mName,DeviceId) values('$mProductID','$mName','$DeviceId')";
+                                        $add_macbook_query_2 = "insert into mackbookname(mName,mScreensize,mRAM,mGPU,mStorage_,mBattery,mWeight,mProcessor,mPrice) values('$mName','$mScreensize','$mRAM','$mGPU','$mStorage_','$mBattery','$mWeight','$mProcessor','$mPrice')";
+                                        $run_add_macbook_query_1 = mysqli_query($con,$add_macbook_query_1);
+                                        $run_add_macbook_query_2 = mysqli_query($con,$add_macbook_query_2);
+                                        if($run_add_macbook_query_1)
+                                        {
+                                            echo "<br>In the process of adding the Product Details.<br>";
+                                        }
+                                        else
+                                        {
+                                            echo "<br><b>FIRST QUERY DID NOT RUN.</b><br>";
+                                        }
+                                        if($run_add_macbook_query_2)
+                                        {
+                                            echo "<br>Product Details <b>ADDED</b>.<br>";
+                                        }
+                                        else
+                                        {
+                                            echo "<br><b>SECOND QUERY DID NOT RUN.</b><br>";
+                                        }
+                                        // Displaying Product Details by fetching
+                                        $pro_name=$_POST['mProductID'];
+                                        $pro_id = $pro_name;
+                                        $get_macbook = "select * from macbook where mProductID='$pro_id'";
+                                        $run_macbook = mysqli_query($con,$get_macbook);
+                                        while($macbook_details = mysqli_fetch_array($run_macbook))
+                                        {
+                                            $mProductID = $macbook_details['mProductID'];
+                                            $mName = $macbook_details['mName'];
+                                            echo $mName;
+                                            $DeviceId = $macbook_details['DeviceId'];
+                                            $getting_other_details = "select * from macbookname where mName='$mName'";
+                                            if($getting_other_details)
+                                            {
+                                                echo "<br>Query Given<br>";
+                                            }
+                                            $running_other_details = mysqli_query($con,$getting_other_details);
+                                            if($running_other_details)
+                                            {
+                                                echo "Query Ran<br>";
+                                            }
+                                            while($other_macbook_details = mysqli_fetch_array($running_other_details))
+                                            {
+                                                $mName      = $other_macbook_details['mName'];
+                                                $mScreensize= $other_macbook_details['mScreensize'];
+                                                $mRAM       = $other_macbook_details['mRAM'];
+                                                $mGPU       = $other_macbook_details['mGPU'];
+                                                $mStorage_  = $other_macbook_details['mStorage_'];
+                                                $mBattery   = $other_macbook_details['mBattery'];
+                                                $mWeight    = $other_macbook_details['mWeight'];
+                                                $mProcessor = $other_macbook_details['mProcessor'];
+                                                $mPrice     = $other_macbook_details['mPrice'];
+                                                echo "
+                                                <div>
+                                                    <b>MackBook ID            :</b> $mProductID     <br>
+                                                    <b>MackBook Name          :</b> $mName          <br>
+                                                    <b>MackBook Device ID     :</b> $DeviceId       <br>
+                                                    <b>MackBook Screen Size   :</b> $mScreensize    <br>
+                                                    <b>MackBook RAM           :</b> $mRAM           <br>
+                                                    <b>MackBook GPU           :</b> $mGPU           <br>
+                                                    <b>MackBook Storage       :</b> $mStorage_      <br>
+                                                    <b>MackBook Battery       :</b> $mBattery       <br>
+                                                    <b>MackBook Weight        :</b> $mWeight        <br>
+                                                    <b>MackBook Processor     :</b> $mProcessor     <br>
+                                                    <b>MackBook Price         :</b> $mPrice         <br>
+                                                </div>
+                                                ";
+                                            }
+                                        }
                                     }
                                 }
                             }
