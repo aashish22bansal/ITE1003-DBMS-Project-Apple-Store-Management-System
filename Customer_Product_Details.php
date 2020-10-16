@@ -13,10 +13,10 @@
 	</head>
 	<body>
         <div class="header">
-            <a href="HOME_PAGE.html" class="logo">Apple</a>
+            <a href="Admin_HOME_PAGE.html" class="logo">Apple</a>
             <div class="header-right">
-                <a class="active" href="Product_Details.php">Home</a>
-                <a href="Login.php">Login</a>
+                <a class="active" href="Admin_HOME_PAGE.html">Home</a>
+                <a href="Admin_Login.php">Admin Login</a>
                 <a href="Logout.php">Logout</a>
             </div>
         </div>
