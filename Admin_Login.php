@@ -1,57 +1,151 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
     <head>
-        <title>Admin Login</title>
-        <link rel="stylesheet" href="Login.css">
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="style01.css" />
+        <title>Admin Sign in & Sign up Form</title>
     </head>
     <body>
-        <div class="header">
-            <a href="Admin_HOME_PAGE.html" class="logo">Apple</a>
-            <div class="header-right">
-                <a class="active" href="Admin_HOME_PAGE.html">Home</a>
-                <a href="Customer_Login.php">Customer Login</a>
-                <a href="Logout.php">Logout</a>
+        <div class="container">
+            <div class="forms-container">
+                <div class="signin-signup">
+                    <form action="Admin_HOME_PAGE.html" class="sign-in-form" method="post">
+                        <h2 class="title">Sign in</h2>
+                        <div class="input-field">
+                            <i class="fas fa-user"></i>
+                            <input type="text" name="Login_Admin_ID" placeholder="Admin ID" />
+                        </div>
+                        <div class="input-field">
+                            <i class="fas fa-user"></i>
+                            <input type="text" name="Login_Username" placeholder="Email" />
+                        </div>
+                        <div class="input-field">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" name="Login_Password" placeholder="Password" />
+                        </div>
+                        <input type="submit" name="Login" value="Login" class="btn solid" />
+                        <p class="social-text">Or Sign in with social platforms</p>
+                        <div class="social-media">
+                            <a href="#" class="social-icon">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="social-icon">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="social-icon">
+                                <i class="fab fa-google"></i>
+                            </a>
+                            <a href="#" class="social-icon">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </div>
+                    </form>
+                    <form action="Admin_HOME_PAGE.html" class="sign-up-form" method="post">
+                        <h2 class="title">Sign up</h2>
+                        <div class="input-field">
+                            <i class="fas fa-user"></i>
+                            <input type="text" name="Register_Admin_ID" placeholder="Admin ID" />
+                        </div>
+                        <div class="input-field">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" name="Register_Username" placeholder="Email" />
+                        </div>
+                        <div class="input-field">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" name="Register_Password" placeholder="Password" />
+                        </div>
+                        <input type="submit" class="btn" name="Register" value="Register" />
+                        <p class="social-text">Or Sign up with social platforms</p>
+                        <div class="social-media">
+                            <a href="#" class="social-icon">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="social-icon">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="social-icon">
+                                <i class="fab fa-google"></i>
+                            </a>
+                            <a href="#" class="social-icon">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="panels-container">
+                <div class="panel left-panel">
+                    <div class="content">
+                        <h3>New here ?</h3>
+                        <p>Get started!<br>Conserve the environment for a better tomorrow.</br></p>
+                        <button class="btn transparent" id="sign-up-btn">Sign up</button>
+                    </div>
+                    <img src="img/log.svg" class="image" alt="" />
+                </div>
+                <div class="panel right-panel">
+                    <div class="content">
+                        <h3>One of us ?</h3>
+                        <p>Amazing perks coming your way!!<br>To know more...</p>
+                        <button class="btn transparent" id="sign-in-btn">Sign in</button>
+                    </div>
+                    <img src="img/register.svg" class="image" alt="" />
+                </div>
             </div>
         </div>
-        <formwaction="Admin_HOME_PAGE.html" method="post">
-            <div class="imgcontainer">
-                <img src="login.jpg" alt="Avatar" class="avatar" width="100px" height="100px">
-            </div>
 
-            <div class="container">
-                <label for="uname"><b>Username</b></label>
-                <input type="text" placeholder="Enter Email" name="uname" required>
-
-                <label for="psw"><b>Password</b></label>
-                <input type="password" placeholder="Enter Password" name="psw" required>
-
-                <button type="submit">Login</button>
-                <label>
-                    <input type="checkbox" checked="checked" name="remember"> Remember me
-                </label>
-            </div>
-
-            <div class="container" style="background-color:#f1f1f1">
-                <button type="button" class="cancelbtn">Cancel</button>
-                <!--span class="psw">Forgot <a href="#">password?</a></span-->
-            </div>
-        </form>
-        <?php
-            session_start();
-            $db=mysqli_connect("localhost","root","123Aashish456","applestore");
-            if (!isset($_SESSION['uname'])) {
-                echo "<a href='Login.php'>Login</a>";
-            }
-            else{
-                echo "Welcome: ".$_SESSION['uname']. "";
-				$admin_email = $_SESSION['uname'];
-				$checking_in_admin = "select * from admin where adEmail='$admin_email'";
-				$running_query = mysqli_query($con,$checking_in_admin);
-				if($running_query){
-					header("Employee_Details.php"); /* Redirect browser */
-					exit();
-				}
-            }
-        ?>
+        <script src="app.js"></script>
     </body>
-
+    <?php
+        $con = mysqli_connect("localhost","root","123Aashish456","applestore");
+        if($con)
+        {
+            if(isset($_POST['Login_Admin_ID']))
+            {
+                if(array_key_exists('Login',$_POST))
+                {
+                    Admin_Login();
+                }
+                function Admin_Login()
+                {
+                    $Login_Admin_ID = $_POST['Login_Admin_ID'];
+                    $Login_Username = $_POST['Login_Username'];
+                    $Login_Password = $_POST['Login_Password'];
+                    $checking_admin = "select * from admin where adID='$Login_Admin_ID' and adEmail='$Login_Username' and adPassword='$Login_Password'";
+                    $running_checking_admin = mysqli_query($con,$checking_admin);
+                    if($running_checking_admin)
+                    {
+                        header(Admin_HOME_PAGE.html);
+                    }
+                }
+            }
+            /*
+            else if(isset($_POST['Register_Admin_ID']))
+            {
+                if(array_key_exists('Register',$_POST))
+                {
+                    Admin_Register();
+                }
+                function Admin_Register()
+                {
+                    $Register_Admin_ID = $_POST['Register_Admin_ID'];
+                    $Register_Username = $_POST['Register_Username'];
+                    $Register_Password = $_POST['Register_Password'];
+                    $registering_admin = "insert into admin(adID,adEmail,adPassword) values('$Register_Admin_ID','$Register_Username','$Register_Password')";
+                    $running_registering_admin = mysqli_query($con,$registering_admin);
+                    if($running_registering_admin)
+                    {
+                        header(Admin_HOME_PAGE.html);
+                    }
+                }
+            }
+            */
+        }
+        else
+        {
+            echo "Not Connected to Database";
+        }
+    ?>
 </html>
