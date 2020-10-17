@@ -17,7 +17,7 @@
             <div class="header-right">
                 <a class="active" href="Admin_HOME_PAGE.html">Home</a>
                 <a href="Admin_Login.php">Admin Login</a>
-                <a href="Logout.php">Logout</a>
+                <a href="Customer_Logout.php">Logout</a>
             </div>
         </div>
         <style>
