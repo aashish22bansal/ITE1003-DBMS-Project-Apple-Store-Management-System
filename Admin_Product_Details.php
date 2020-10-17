@@ -290,7 +290,8 @@
                                 echo "<br>ID Received <br>";
                                 $pro_name=$_POST['pro_id'];
                                 $pro_id = $pro_name;
-                                echo "
+                                ?>
+                                <!echo ">
                                 <form method='post' class='form1'>
                                     <span class='text'>  Apple Product ID:          </span><input type='text' name='apID'><br>
                                     <span class='text'>  iPhone Product ID:         </span><input type='text' name='iPhProductID'><br>
@@ -307,7 +308,8 @@
                                     <span class='text'>  iPhone Price:              </span><input type='number' name='iPhPrice'><br>
                                     <button type='submit' class='button' name='Add_iPhone' value='Add_iPhone'>Add</button>
                                 </form>
-                                ";
+                                <!";>
+                                <?php
                                 if(array_key_exists('Add_iPhone',$_POST))
                                 {
                                     Add_iPhone();
