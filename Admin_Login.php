@@ -12,7 +12,7 @@
                 <a href="Logout.php">Logout</a>
             </div>
         </div>
-        <form action="Admin_HOME_PAGE.html" method="post">
+        <formwaction="Admin_HOME_PAGE.html" method="post">
             <div class="imgcontainer">
                 <img src="login.jpg" alt="Avatar" class="avatar" width="100px" height="100px">
             </div>
