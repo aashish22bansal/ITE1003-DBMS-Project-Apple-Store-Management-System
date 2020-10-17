@@ -42,7 +42,7 @@
                             </a>
                         </div>
                     </form>
-                    <form action="Admin_HOME_PAGE.html" class="sign-up-form" method="post">
+                    <!--form action="Admin_HOME_PAGE.html" class="sign-up-form" method="post">
                         <h2 class="title">Sign up</h2>
                         <div class="input-field">
                             <i class="fas fa-user"></i>
@@ -72,11 +72,11 @@
                                 <i class="fab fa-linkedin-in"></i>
                             </a>
                         </div>
-                    </form>
+                    </form-->
                 </div>
             </div>
 
-            <div class="panels-container">
+            <!--div class="panels-container">
                 <div class="panel left-panel">
                     <div class="content">
                         <h3>New here ?</h3>
@@ -93,7 +93,7 @@
                     </div>
                     <img src="img/register.svg" class="image" alt="" />
                 </div>
-            </div>
+            </div-->
         </div>
 
         <script src="app.js"></script>
