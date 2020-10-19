@@ -44,7 +44,7 @@
 				margin-left: 16px;
 			}
             input {
-                width: 20%;
+                width: 40%;
             }
             input[type=text] {
                 padding: 12px 20px;

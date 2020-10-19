@@ -6,14 +6,18 @@
 		<link rel="stylesheet" href="FIRST_PAGE.css">
 	</head>
 	<body>
-        <div class="header">
-            <a href="Admin_HOME_PAGE.html" class="logo">Apple</a>
-            <div class="header-right">
-                <a class="active" href="Admin_HOME_PAGE.html">Home</a>
-                <a href="Customer_Login.php">Customer Login</a>
-                <a href="Admin_Logout.php">Logout</a>
-            </div>
-        </div>
+        <nav class="site-header sticky-top py-1">
+			<div class="container d-flex flex-column flex-md-row justify-content-between">
+				<a class="py-2" href="#" aria-label="Product"></a>
+				<a class="py-2 d-none d-md-inline-block" href="#"> <img src="apple logo.png" height="30 px" width="30 px"> </a>
+				<a class="py-2 d-none d-md-inline-block" href="Customer_HOME_PAGE.html">Home</a>
+				<a class="py-2 d-none d-md-inline-block" href="Customer_Login.php">Admin Login</a>
+				<a class="py-2 d-none d-md-inline-block" href="Customer_Logout.php">Logout</a>
+				<a class="py-2 d-none d-md-inline-block" href="#"></a>
+				<a class="py-2 d-none d-md-inline-block" href="#"></a>
+				<a class="py-2 d-none d-md-inline-block" href="#"></a>
+			</div>
+		</nav>
         <style>
             input {
                 width: 10%;
