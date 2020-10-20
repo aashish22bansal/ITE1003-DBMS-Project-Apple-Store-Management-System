@@ -5,14 +5,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="style01.css" />
-        <title>Admin Sign in & Sign up Form</title>
+        <title>Admin Sign in</title>
     </head>
     <body>
         <div class="container">
             <div class="forms-container">
                 <div class="signin-signup">
                     <form action="Admin_HOME_PAGE.html" class="sign-in-form" method="post">
-                        <h2 class="title">Sign in</h2>
+                        <h2 class="title">Admin Sign in</h2>
                         <div class="input-field">
                             <i class="fas fa-user"></i>
                             <input type="text" name="Login_Admin_ID" placeholder="Admin ID" />

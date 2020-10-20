@@ -12,7 +12,7 @@
             <div class="forms-container">
                 <div class="signin-signup">
                     <form action="Customer_HOME_PAGE.html" class="sign-in-form" method="post">
-                        <h2 class="title">Sign in</h2>
+                        <h2 class="title">Customer Sign in</h2>
                         <div class="input-field">
                             <i class="fas fa-user"></i>
                             <input type="text" name="Login_Username" placeholder="Customer Email" />
