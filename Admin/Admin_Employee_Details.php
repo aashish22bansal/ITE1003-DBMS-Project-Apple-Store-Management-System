@@ -15,10 +15,10 @@
 			<div class="container d-flex flex-column flex-md-row justify-content-between">
 				<a class="py-2" href="#" aria-label="Product"></a>
 				<a class="py-2 d-none d-md-inline-block" href="#"> <img src="apple logo.png" height="30 px" width="30 px"> </a>
-				<a class="py-2 d-none d-md-inline-block" href="Admin_HOME_PAGE.html">Home</a>
+				<a class="py-2 d-none d-md-inline-block" href="Admin_HOME_PAGE.html">Admin Home</a>
 				<a class="py-2 d-none d-md-inline-block" href="Admin_Login.php">Admin Login</a>
+				<a class="py-2 d-none d-md-inline-block" href="../Customer/Customer_Login.php">Customer Login</a>
 				<a class="py-2 d-none d-md-inline-block" href="Admin_Logout.php">Logout</a>
-				<a class="py-2 d-none d-md-inline-block" href="#"></a>
 				<a class="py-2 d-none d-md-inline-block" href="#"></a>
 				<a class="py-2 d-none d-md-inline-block" href="#"></a>
 			</div>

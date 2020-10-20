@@ -115,9 +115,12 @@
                     $Login_Password = $_POST['Login_Password'];
                     $checking_admin = "select * from admin where adID='$Login_Admin_ID' and adEmail='$Login_Username' and adPassword='$Login_Password'";
                     $running_checking_admin = mysqli_query($con,$checking_admin);
-                    if($running_checking_admin)
+                    if($checking_admin=mysqli_fetch_array($running_checking_admin))
                     {
                         header(Admin_HOME_PAGE.html);
+                    }
+                    else{
+                        echo "<script>Admin Does not Exist.</script>";
                     }
                 }
             }
