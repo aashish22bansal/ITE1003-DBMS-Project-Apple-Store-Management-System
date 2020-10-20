@@ -22,7 +22,7 @@
                 <a class="py-2 d-none d-md-inline-block" href="../Admin/Admin_Login.php">Admin Login</a>
                 <a class="py-2 d-none d-md-inline-block" href="Customer_Login.php">Customer Login</a>
 				<a class="py-2 d-none d-md-inline-block" href="Customer_Logout.php">Logout</a>
-				<a class="py-2 d-none d-md-inline-block" href="#"></a>
+				<a class="py-2 d-none d-md-inline-block" href="../about.html">About Us</a>
 				<a class="py-2 d-none d-md-inline-block" href="#"></a>
 			</div>
 		</nav>
@@ -36,7 +36,7 @@
 				display: inline-block;
 				border: 3px #bdbbbb solid;
 				margin-bottom: 32px;
-				margin-left: 33%;
+				margin-left: 23%;
                 padding: 32px;
 				
 			}
@@ -44,7 +44,7 @@
 				margin-left: 16px;
 			}
             input {
-                width: 40%;
+                width: 30%;
             }
             input[type=text] {
                 padding: 12px 20px;

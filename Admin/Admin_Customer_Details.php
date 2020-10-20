@@ -16,7 +16,7 @@
                 <a class="py-2 d-none d-md-inline-block" href="../Customer/Customer_Login.php">Customer Login</a>
 				<a class="py-2 d-none d-md-inline-block" href="Admin_Login.php">Admin Login</a>
 				<a class="py-2 d-none d-md-inline-block" href="Admin_Logout.php">Logout</a>
-				<a class="py-2 d-none d-md-inline-block" href="#"></a>
+				<a class="py-2 d-none d-md-inline-block" href="../about.html">About Us</a>
 				<a class="py-2 d-none d-md-inline-block" href="#"></a>
 			</div>
 		</nav>
