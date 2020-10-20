@@ -3,7 +3,9 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Admin Products View</title>
-		<link rel="stylesheet" href="FIRST_PAGE.css">
+        <link rel="stylesheet" href="Admin_HOME_PAGE.css">
+        <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/product/">
+		<link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
 	</head>
 	<body>
         <nav class="site-header sticky-top py-1">
