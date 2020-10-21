@@ -133,7 +133,7 @@
                                         $iPaName            = $other_ipad_details['iPaName'];
                                         $iPaScreenSize      = $other_ipad_details['iPaScreenSize'];
                                         $iPaRAM             = $other_ipad_details['iPaRAM'];
-                                        $iPaUnlocking_Feature=$other_ipad_details['iPaUnlocking_Feature'];
+                                        $iPaUnlocking_Feature=$other_ipad_details['iPaUnlockingFeature'];
                                         $iPaStorage_        = $other_ipad_details['iPaStorage_'];
                                         $iPaBattery         = $other_ipad_details['iPaBattery'];
                                         $iPaWeight          = $other_ipad_details['iPaWeight'];
@@ -299,25 +299,30 @@
                                 $pro_id = $pro_name;
                                 echo "
                                 <form method='post' class='form1'>
-                                    <span class='text'>  Apple Product ID:          </span><input type='text' name='apID'><br>
-                                    <span class='text'>  iPhone Product ID:         </span><input type='text' name='iPhProductID'><br>
-                                    <span class='text'>  iPhone Name:               </span><input type='text' name='iPhName_'><br>
-                                    <span class='text'>  iPhone Device ID:          </span><input type='text' name='DeviceID'><br>
-                                    <span class='text'>  iPhone Screen Size:        </span><input type='number' name='iPhScreen'><br>
-                                    <span class='text'>  iPhone RAM:                </span><input type='number' name='iPhRAM'><br>
-                                    <span class='text'>  iPhone Unlocking Feature:  </span><input type='text' name='iPhUnlocking_Feature'><br>
-                                    <span class='text'>  iPhone Storage:            </span><input type='number' name='iPhStorage_'><br>
-                                    <span class='text'>  iPhone Battery:            </span><input type='text' name='iPhBattery'><br>
-                                    <span class='text'>  iPhone Charger:            </span><input type='text' name='iPhCharger'><br>
-                                    <span class='text'>  iPhone Weight:             </span><input type='text' name='iPhWeight'><br>
-                                    <span class='text'>  iPhone Processor:          </span><input type='text' name='iPhProcessor'><br>
-                                    <span class='text'>  iPhone Price:              </span><input type='number' name='iPhPrice'><br>
                                     <button type='submit' class='button' name='Add_iPhone' value='Add_iPhone'>Add</button>
                                 </form>
                                 ";
                                 if(array_key_exists('Add_iPhone',$_POST))
                                 {
-                                    Add_iPhone();
+                                    echo "
+									<form method='post' class='form1'>
+										<span class='text'>  Apple Product ID:          </span><input type='text' name='apID'><br>
+										<span class='text'>  iPhone Product ID:         </span><input type='text' name='iPhProductID'><br>
+										<span class='text'>  iPhone Name:               </span><input type='text' name='iPhName_'><br>
+										<span class='text'>  iPhone Device ID:          </span><input type='text' name='DeviceID'><br>
+										<span class='text'>  iPhone Screen Size:        </span><input type='number' name='iPhScreen'><br>
+										<span class='text'>  iPhone RAM:                </span><input type='number' name='iPhRAM'><br>
+										<span class='text'>  iPhone Unlocking Feature:  </span><input type='text' name='iPhUnlocking_Feature'><br>
+										<span class='text'>  iPhone Storage:            </span><input type='number' name='iPhStorage_'><br>
+										<span class='text'>  iPhone Battery:            </span><input type='text' name='iPhBattery'><br>
+										<span class='text'>  iPhone Charger:            </span><input type='text' name='iPhCharger'><br>
+										<span class='text'>  iPhone Weight:             </span><input type='text' name='iPhWeight'><br>
+										<span class='text'>  iPhone Processor:          </span><input type='text' name='iPhProcessor'><br>
+										<span class='text'>  iPhone Price:              </span><input type='number' name='iPhPrice'><br>
+										<button type='submit' class='button' name='Add_iPhone' value='Add_iPhone'>Add</button>
+									</form>
+									";
+									Add_iPhone();
                                 }
                                 else
                                 {
@@ -462,17 +467,17 @@
                                     {
                                         echo "<br>iPad Detail Received!<br>";
                                         $apID                   = $_POST['apID'];
-                                        $iPaProductID           = $_POST['iPhProductID'];
-                                        $iPaName_               = $_POST['iPhName_'];
+                                        $iPaProductID           = $_POST['iPaProductID'];
+                                        $iPaName_               = $_POST['iPaName_'];
                                         $DeviceID               = $_POST['DeviceID'];
-                                        $iPaScreen              = $_POST['iPhScreen'];
-                                        $iPaRAM                 = $_POST['iPhRAM'];
-                                        $iPaUnlocking_Feature   = $_POST['iPhUnlocking_Feature'];
-                                        $iPaStorage_            = $_POST['iPhStorage_'];
-                                        $iPaBattery             = $_POST['iPhBattery'];
-                                        $iPaWeight              = $_POST['iPhWeight'];
-                                        $iPaProcessor           = $_POST['iPhProcessor'];
-                                        $iPaPrice               = $_POST['iPhPrice'];
+                                        $iPaScreen              = $_POST['iPaScreen'];
+                                        $iPaRAM                 = $_POST['iPaRAM'];
+                                        $iPaUnlocking_Feature   = $_POST['iPaUnlockingFeature'];
+                                        $iPaStorage_            = $_POST['iPaStorage_'];
+                                        $iPaBattery             = $_POST['iPaattery'];
+                                        $iPaWeight              = $_POST['iPaWeight'];
+                                        $iPaProcessor           = $_POST['iPaProcessor'];
+                                        $iPaPrice               = $_POST['iPaPrice'];
                                         $add_ipad_query_1 = "insert into appleproducts(apID,apName,Buys) values('$apID','$iPaName_','X')";
                                         $add_ipad_query_2 = "insert into ipad(iPaProductID,iPaName_,DeviceId) values('$iPhProductID','$iPhName_','$DeviceID')";
                                         $add_ipad_query_3 = "insert into ipadname(iPaName,iPaScreenSize,iPaRAM,iPaUnlockingFeature,iPaStorage_,iPaBattery,iPaWeight,iPaProcessor,iPaPrice) values('$iPaName_','$iPaScreenSize','$iPaRAM','$iPaUnlockingFeature','$iPaStorage_','$iPaBattery','$iPaWeight','$iPaProcessor','$iPaPrice')";
@@ -532,7 +537,7 @@
                                                 $iPaName            = $other_ipad_details['iPaName'];
                                                 $iPaScreenSize      = $other_ipad_details['iPaScreenSize'];
                                                 $iPaRAM             = $other_ipad_details['iPaRAM'];
-                                                $iPaUnlocking_Feature=$other_ipad_details['iPaUnlocking_Feature'];
+                                                $iPaUnlocking_Feature=$other_ipad_details['iPaUnlockingFeature'];
                                                 $iPaStorage_        = $other_ipad_details['iPaStorage_'];
                                                 $iPaBattery         = $other_ipad_details['iPaBattery'];
                                                 $iPaWeight          = $other_ipad_details['iPaWeight'];
@@ -540,17 +545,17 @@
                                                 $iPaPrice           = $other_ipad_details['iPaPrice'];
                                                 echo "
                                                 <div>
-                                                    <b>iPhone ID                :</b> $iPaProductID         <br>
-                                                    <b>iPhone Name              :</b> $iPaName_             <br>
-                                                    <b>iPhone Device ID         :</b> $DeviceId             <br>
-                                                    <b>iPhone Screen Size       :</b> $iPaScreen            <br>
-                                                    <b>iPhone RAM               :</b> $iPaRAM               <br>
-                                                    <b>iPhone Unlocking Feature :</b> $iPaUnlocking_Feature <br>
-                                                    <b>iPhone Storage           :</b> $iPaStorage           <br>
-                                                    <b>iPhone Battery           :</b> $iPaBattery           <br>
-                                                    <b>iPhone Weight            :</b> $iPaWeight            <br>
-                                                    <b>iPhone Processor         :</b> $iPaProcessor         <br>
-                                                    <b>iPhone Price             :</b> $iPaPrice             <br>
+                                                    <b>iPad ID                :</b> $iPaProductID         <br>
+                                                    <b>iPad Name              :</b> $iPaName_             <br>
+                                                    <b>iPad Device ID         :</b> $DeviceId             <br>
+                                                    <b>iPad Screen Size       :</b> $iPaScreen            <br>
+                                                    <b>iPad RAM               :</b> $iPaRAM               <br>
+                                                    <b>iPad Unlocking Feature :</b> $iPaUnlocking_Feature <br>
+                                                    <b>iPad Storage           :</b> $iPaStorage           <br>
+                                                    <b>iPad Battery           :</b> $iPaBattery           <br>
+                                                    <b>iPad Weight            :</b> $iPaWeight            <br>
+                                                    <b>iPad Processor         :</b> $iPaProcessor         <br>
+                                                    <b>iPad Price             :</b> $iPaPrice             <br>
                                                 </div>
                                                 ";
                                             }
@@ -957,7 +962,7 @@
                                         $iPaName            = $other_ipad_details['iPaName'];
                                         $iPaScreenSize      = $other_ipad_details['iPaScreenSize'];
                                         $iPaRAM             = $other_ipad_details['iPaRAM'];
-                                        $iPaUnlocking_Feature=$other_ipad_details['iPaUnlocking_Feature'];
+                                        $iPaUnlocking_Feature=$other_ipad_details['iPaUnlockingFeature'];
                                         $iPaStorage_        = $other_ipad_details['iPaStorage_'];
                                         $iPaBattery         = $other_ipad_details['iPaBattery'];
                                         $iPaWeight          = $other_ipad_details['iPaWeight'];
