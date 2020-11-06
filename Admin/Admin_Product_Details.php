@@ -268,14 +268,14 @@
                 }
             }
         ?>
-        <h2>Adding Product Details</h2>
+        <!--h2>Adding Product Details</h2>
         <form method="post" class="form1">
             <span class="text">Product Type: </span>
             <input type="text" name="pro_type">
             <span class="text">Product ID: </span>
             <input type="text" name="pro_id">
             <button type="submit" class="button" name="Add" value="Add">Add</button>
-        </form>
+        </form-->
         <?php
             if(array_key_exists('Add',$_POST))
             {

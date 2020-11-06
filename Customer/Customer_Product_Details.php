@@ -115,7 +115,7 @@
                                                 <b>iPhone Price             :</b> $iPhPrice             <br>
                                             </div>
                                             ";
-                                            echo "<button type='submit' id='buy_product' onclick='addProductToCart()'>Buy Product</button>";
+                                            //echo "<button type='submit' id='buy_product' onclick='addProductToCart()'>Buy Product</button>";
                                         }
                                     }
                                 }
